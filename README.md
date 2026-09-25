@@ -51,7 +51,7 @@ npx wrangler pages deploy dist --project-name fukkaha
 ```
 لو طلبت Cloudflare بطاقة دفع في أي خطوة: توقّف واستخدم الخيار 2.
 
-**الخيار 2 (المفعّل): GitHub Pages** عبر `.github/workflows/deploy.yml`: يتحقق من المحتوى ويشغّل الاختبارات ويبني وينشر عند كل دفع على `main`. الرابط: https://khaledabushadi.github.io/fukkaha/
+**الخيار 2 (المفعّل): GitHub Pages** عبر `.github/workflows/deploy.yml`: يتحقق من المحتوى ويشغّل الاختبارات ويبني وينشر عند كل دفع على `main`. الرابط: https://khaledabushadi.github.io/fizyks/
 
 البناء يستخدم `base: './'` وموجّه hash، فنفس `dist/` يعمل على أي مسار.
 
