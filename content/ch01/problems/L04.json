@@ -1,0 +1,325 @@
+[
+  {
+    "id": "ch01.resistance-from-resistivity",
+    "chapter": 1,
+    "lesson": "L04",
+    "status": "draft",
+    "title": "المقاومة من المقاومة النوعية",
+    "marks": 1,
+    "cognitiveLevel": "medium",
+    "targetSeconds": 200,
+    "stem": "سلك طوله {L} متر ومساحة مقطعه {Amm} مللي متر مربع، والمقاومة النوعية لمادته {rho} أوم.متر. احسب مقاومة السلك.",
+    "variables": {
+      "L": {
+        "values": [
+          5,
+          10,
+          20,
+          25,
+          50,
+          100,
+          200
+        ]
+      },
+      "Amm": {
+        "values": [
+          0.5,
+          1,
+          1.5,
+          2,
+          2.5
+        ]
+      },
+      "rhoM": {
+        "values": [
+          1.6,
+          1.7,
+          2.8,
+          5.6,
+          10
+        ]
+      }
+    },
+    "derived": {
+      "rho": "rhoM * 1e-8",
+      "A": "Amm * 1e-6"
+    },
+    "constraints": [
+      "rhoM * 1e-8 * L / (Amm * 1e-6) >= 0.01",
+      "rhoM * 1e-8 * L / (Amm * 1e-6) <= 9"
+    ],
+    "answer": {
+      "expr": "rho * L / A",
+      "unit": "Ω",
+      "sigFigs": 3
+    },
+    "distractors": [
+      {
+        "expr": "rho * L / Amm",
+        "misconception": "M-AREA-MM2"
+      },
+      {
+        "expr": "rho * A / L",
+        "misconception": "M-RESISTIVITY-FORMULA-INVERTED"
+      },
+      {
+        "expr": "rho * L / (Amm * 1e-3)",
+        "misconception": "M-AREA-MM2"
+      }
+    ],
+    "workshop": {
+      "diagramChoices": [
+        "wire-segment",
+        "single-resistor",
+        "series-two-resistors"
+      ],
+      "correctDiagram": "wire-segment",
+      "lawChoices": [
+        "R = \\rho_e \\frac{\\ell}{A}",
+        "R = \\rho_e \\frac{A}{\\ell}",
+        "R = \\frac{V}{I}",
+        "\\sigma = \\frac{1}{\\rho_e}"
+      ],
+      "correctLaw": "R = \\rho_e \\frac{\\ell}{A}",
+      "inventory": [
+        {
+          "symbol": "\\ell",
+          "var": "L",
+          "unit": "m"
+        },
+        {
+          "symbol": "A",
+          "var": "Amm",
+          "unit": "mm²"
+        },
+        {
+          "symbol": "\\rho_e",
+          "var": "rho",
+          "unit": "Ω·m"
+        }
+      ],
+      "unknown": "R",
+      "hiddenGiven": "المساحة بالمللي متر المربع: 1 مللي متر مربع = $10^{-6}$ متر مربع (المللي اتربّع)",
+      "sanityCheck": "سلك معدني عادي مقاومته صغيرة: أقل من 10 أوم وأكبر من جزء من الألف",
+      "sanityExpr": "x < 10 and x > 0.001"
+    },
+    "hints": [
+      "سلك بطول ومساحة ونوع مادة: ده قانون المقاومة النوعية $R = \\rho_e \\frac{\\ell}{A}$.",
+      "حوّل المساحة: {Amm} مللي متر مربع = {A} متر مربع. الطول فوق والمساحة تحت.",
+      "احسب {rho} × {L} ÷ {A}. كام أوم؟"
+    ],
+    "solutionSteps": {
+      "draw": "سلك له طول ℓ ومساحة مقطع A",
+      "classify": "الفصل 1: $R = \\rho_e \\frac{\\ell}{A}$",
+      "inventory": "$\\ell = @L\\,m$ · $A = @Amm\\,mm^2 = @A\\,m^2$ · $\\rho_e = @rho\\,\\Omega\\,m$ · المطلوب: $R$",
+      "compute": "$R = \\frac{@rho \\times @L}{@A} = @answer\\,\\Omega$",
+      "check": "مقاومة سلك معدني صغيرة، منطقي"
+    }
+  },
+  {
+    "id": "ch01.resistance-from-diameter",
+    "chapter": 1,
+    "lesson": "L04",
+    "status": "draft",
+    "title": "المقاومة من القطر (فخ نصف القطر)",
+    "marks": 1,
+    "cognitiveLevel": "hard",
+    "targetSeconds": 240,
+    "stem": "سلك من النحاس طوله {L} متر وقطره {dmm} مللي متر. إذا كانت المقاومة النوعية للنحاس {rho} أوم.متر، احسب مقاومة السلك.",
+    "variables": {
+      "L": {
+        "values": [
+          2,
+          5,
+          10,
+          20,
+          50,
+          100
+        ]
+      },
+      "dmm": {
+        "values": [
+          0.5,
+          1,
+          1.2,
+          1.6,
+          2,
+          2.4
+        ]
+      }
+    },
+    "derived": {
+      "rho": "1.79e-8",
+      "rmm": "dmm / 2",
+      "r": "dmm / 2 * 1e-3",
+      "A": "pi * (dmm / 2 * 1e-3)^2"
+    },
+    "constraints": [
+      "1.79e-8 * L / (pi * (dmm / 2 * 1e-3)^2) >= 0.005",
+      "1.79e-8 * L / (pi * (dmm / 2 * 1e-3)^2) <= 4.5"
+    ],
+    "answer": {
+      "expr": "rho * L / A",
+      "unit": "Ω",
+      "sigFigs": 3
+    },
+    "distractors": [
+      {
+        "expr": "rho * L / (pi * (dmm * 1e-3)^2)",
+        "misconception": "M-AREA-DIAMETER"
+      },
+      {
+        "expr": "rho * L / (pi * (dmm / 2 * 1e-3))",
+        "misconception": "M-AREA-NOT-SQUARED"
+      },
+      {
+        "expr": "rho * L / (pi * (dmm / 2)^2)",
+        "misconception": "M-AREA-MM2"
+      }
+    ],
+    "workshop": {
+      "diagramChoices": [
+        "wire-segment",
+        "single-resistor",
+        "parallel-two-resistors"
+      ],
+      "correctDiagram": "wire-segment",
+      "lawChoices": [
+        "R = \\rho_e \\frac{\\ell}{A}",
+        "R = \\rho_e \\frac{A}{\\ell}",
+        "A = \\pi d^2",
+        "R = \\frac{V}{I}"
+      ],
+      "correctLaw": "R = \\rho_e \\frac{\\ell}{A}",
+      "inventory": [
+        {
+          "symbol": "\\ell",
+          "var": "L",
+          "unit": "m"
+        },
+        {
+          "symbol": "d",
+          "var": "dmm",
+          "unit": "mm"
+        },
+        {
+          "symbol": "\\rho_e",
+          "var": "rho",
+          "unit": "Ω·m"
+        }
+      ],
+      "unknown": "R",
+      "hiddenGiven": "المعطى القطر مش نصف القطر: $r = \\frac{d}{2}$، والمساحة $A = \\pi r^2$",
+      "sanityCheck": "سلك نحاس عادي مقاومته صغيرة: أقل من 5 أوم",
+      "sanityExpr": "x < 5 and x > 0.001"
+    },
+    "hints": [
+      "الأول احسب مساحة المقطع، وبعدين قانون $R = \\rho_e \\frac{\\ell}{A}$.",
+      "القطر {dmm} مللي متر، يعني نصف القطر = {rmm} مللي متر = {r} متر. المساحة $A = \\pi r^2$.",
+      "المساحة = π × ({r})² = {A} متر مربع. احسب {rho} × {L} ÷ {A}."
+    ],
+    "solutionSteps": {
+      "draw": "سلك نحاس أسطواني، مقطعه دايرة قطرها d",
+      "classify": "الفصل 1: $A = \\pi r^2$ ثم $R = \\rho_e \\frac{\\ell}{A}$",
+      "inventory": "$\\ell = @L\\,m$ · $d = @dmm\\,mm$ ⇒ $r = @r\\,m$ · $\\rho_e = @rho\\,\\Omega\\,m$ · المطلوب: $R$",
+      "compute": "$A = \\pi (@r)^2 = @A\\,m^2$ ، $R = \\frac{@rho \\times @L}{@A} = @answer\\,\\Omega$",
+      "check": "لو استخدمت القطر كامل كانت المقاومة هتطلع ربع القيمة. انتبه للفخ ده!"
+    }
+  },
+  {
+    "id": "ch01.wire-ratio",
+    "chapter": 1,
+    "lesson": "L04",
+    "status": "draft",
+    "title": "نسبة مقاومتين من نفس المادة",
+    "marks": 1,
+    "cognitiveLevel": "hard",
+    "targetSeconds": 180,
+    "stem": "سلكان من نفس المادة. طول السلك الثاني يساوي {k} أمثال طول الأول، وقطره يساوي قطر الأول مقسوماً على {m}. احسب النسبة بين مقاومة السلك الثاني إلى مقاومة السلك الأول.",
+    "variables": {
+      "k": {
+        "values": [
+          2,
+          3,
+          4,
+          5,
+          6,
+          8
+        ]
+      },
+      "m": {
+        "values": [
+          2,
+          3,
+          4
+        ]
+      }
+    },
+    "derived": {
+      "m2": "m^2"
+    },
+    "constraints": [],
+    "answer": {
+      "expr": "k * m^2",
+      "unit": "1",
+      "sigFigs": 3
+    },
+    "distractors": [
+      {
+        "expr": "k * m",
+        "misconception": "M-AREA-NOT-SQUARED"
+      },
+      {
+        "expr": "k / m^2",
+        "misconception": "M-RESISTIVITY-FORMULA-INVERTED"
+      },
+      {
+        "expr": "m^2 / k",
+        "misconception": "M-RESISTIVITY-LENGTH-INVERTED"
+      }
+    ],
+    "workshop": {
+      "diagramChoices": [
+        "two-wires",
+        "wire-segment",
+        "series-two-resistors"
+      ],
+      "correctDiagram": "two-wires",
+      "lawChoices": [
+        "\\frac{R_2}{R_1} = \\frac{\\ell_2}{\\ell_1} \\times \\frac{A_1}{A_2}",
+        "\\frac{R_2}{R_1} = \\frac{\\ell_1}{\\ell_2} \\times \\frac{A_2}{A_1}",
+        "\\frac{R_2}{R_1} = \\frac{\\ell_2}{\\ell_1} \\times \\frac{A_2}{A_1}",
+        "R = \\frac{V}{I}"
+      ],
+      "correctLaw": "\\frac{R_2}{R_1} = \\frac{\\ell_2}{\\ell_1} \\times \\frac{A_1}{A_2}",
+      "inventory": [
+        {
+          "symbol": "\\frac{\\ell_2}{\\ell_1}",
+          "var": "k",
+          "unit": "1"
+        },
+        {
+          "symbol": "\\frac{d_1}{d_2}",
+          "var": "m",
+          "unit": "1"
+        }
+      ],
+      "unknown": "\\frac{R_2}{R_1}",
+      "hiddenGiven": "نفس المادة يعني $\\rho_e$ واحدة وبتختصر. والمساحة بتتناسب مع مربع القطر",
+      "sanityCheck": "السلك التاني أطول وأرفع، فمقاومته لازم أكبر: النسبة أكبر من 1",
+      "sanityExpr": "x > 1"
+    },
+    "hints": [
+      "نفس المادة، يبقى $\\rho_e$ بتروح من البسط والمقام. $R \\propto \\frac{\\ell}{A}$.",
+      "المساحة بتتناسب مع مربع القطر: لو القطر اتقسم على {m}، المساحة تتقسم على {m2}.",
+      "الطول اتضرب في {k} (المقاومة ×{k})، والمساحة اتقسمت على {m2} (المقاومة ×{m2}). اضربهم."
+    ],
+    "solutionSteps": {
+      "draw": "سلكين من نفس المادة، التاني أطول وأرفع",
+      "classify": "الفصل 1: $R = \\rho_e \\frac{\\ell}{A}$ بطريقة النسبة",
+      "inventory": "$\\frac{\\ell_2}{\\ell_1} = @k$ · $\\frac{d_1}{d_2} = @m$ ⇒ $\\frac{A_1}{A_2} = @m2$ · المطلوب: $\\frac{R_2}{R_1}$",
+      "compute": "$\\frac{R_2}{R_1} = @k \\times @m2 = @answer$",
+      "check": "أكبر من 1 لأن السلك التاني أطول وأرفع، منطقي"
+    }
+  }
+]

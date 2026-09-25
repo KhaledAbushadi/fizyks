@@ -1,0 +1,442 @@
+[
+  {
+    "id": "ch01.closed-circuit-current",
+    "chapter": 1,
+    "lesson": "L07",
+    "status": "draft",
+    "title": "التيار في الدائرة المغلقة",
+    "marks": 1,
+    "cognitiveLevel": "medium",
+    "targetSeconds": 180,
+    "stem": "بطارية قوتها الدافعة {emf} فولت ومقاومتها الداخلية {r} أوم، وُصّلت بمقاومة خارجية {R} أوم. احسب شدة التيار المار في الدائرة.",
+    "variables": {
+      "emf": {
+        "values": [
+          6,
+          9,
+          12,
+          24
+        ]
+      },
+      "r": {
+        "min": 0.5,
+        "max": 2,
+        "step": 0.5
+      },
+      "R": {
+        "min": 2,
+        "max": 20,
+        "step": 0.5
+      }
+    },
+    "constraints": [
+      "emf / (R + r) >= 0.2",
+      "emf / (R + r) <= 10"
+    ],
+    "answer": {
+      "expr": "emf / (R + r)",
+      "unit": "A",
+      "sigFigs": 3
+    },
+    "distractors": [
+      {
+        "expr": "emf / R",
+        "misconception": "M-IGNORE-INTERNAL-R"
+      },
+      {
+        "expr": "emf / r",
+        "misconception": "M-ONLY-INTERNAL-R"
+      },
+      {
+        "expr": "emf * (R + r)",
+        "misconception": "M-OHM-INVERTED"
+      }
+    ],
+    "workshop": {
+      "diagramChoices": [
+        "closed-circuit-internal-r",
+        "series-two-resistors",
+        "open-circuit"
+      ],
+      "correctDiagram": "closed-circuit-internal-r",
+      "lawChoices": [
+        "I = \\frac{V}{R}",
+        "I = \\frac{V_B}{R + r}",
+        "V = V_B - I\\,r"
+      ],
+      "correctLaw": "I = \\frac{V_B}{R + r}",
+      "inventory": [
+        {
+          "symbol": "V_B",
+          "var": "emf",
+          "unit": "V"
+        },
+        {
+          "symbol": "r",
+          "var": "r",
+          "unit": "Ω"
+        },
+        {
+          "symbol": "R",
+          "var": "R",
+          "unit": "Ω"
+        }
+      ],
+      "unknown": "I",
+      "hiddenGiven": "المقاومة الداخلية بتتجمع مع الخارجية على التوالي",
+      "sanityCheck": "التيار لازم يطلع أقل من القوة الدافعة ÷ R لوحدها",
+      "sanityExpr": "x < emf / R"
+    },
+    "hints": [
+      "المسألة فيها بطارية ليها مقاومة داخلية. ده قانون أوم للدائرة المغلقة.",
+      "المقاومة الداخلية r بتتجمع مع R. المقاومة الكلية = R + r.",
+      "احسب الأول المقاومة الكلية: {R} + {r} = ؟ وبعدين اقسم عليها {emf}."
+    ],
+    "solutionSteps": {
+      "draw": "دائرة مغلقة: بطارية ($V_B$ و r) موصّلة بمقاومة R",
+      "classify": "الفصل 1: قانون أوم للدائرة المغلقة $I = \\frac{V_B}{R + r}$",
+      "inventory": "$V_B = @emf\\,V$ · $r = @r\\,\\Omega$ · $R = @R\\,\\Omega$ · المطلوب: $I$",
+      "compute": "$I = \\frac{@emf}{@R + @r} = @answer\\,A$",
+      "check": "{answer} A أقل من {emf} ÷ {R}، إذن منطقي"
+    }
+  },
+  {
+    "id": "ch01.terminal-voltage",
+    "chapter": 1,
+    "lesson": "L07",
+    "status": "draft",
+    "title": "فرق الجهد بين قطبي البطارية",
+    "marks": 1,
+    "cognitiveLevel": "medium",
+    "targetSeconds": 180,
+    "stem": "بطارية قوتها الدافعة {VB} فولت ومقاومتها الداخلية {r} أوم، وُصّلت بمقاومة خارجية {R} أوم. احسب فرق الجهد بين قطبي البطارية.",
+    "variables": {
+      "VB": {
+        "values": [
+          6,
+          9,
+          12,
+          24
+        ]
+      },
+      "r": {
+        "values": [
+          0.2,
+          0.3,
+          0.5,
+          1
+        ]
+      },
+      "R": {
+        "values": [
+          2.7,
+          3.5,
+          4.5,
+          4.7,
+          5.5,
+          7.5,
+          9.5,
+          11.5
+        ]
+      }
+    },
+    "derived": {
+      "Rt": "R + r",
+      "I": "VB / (R + r)",
+      "lost": "VB / (R + r) * r"
+    },
+    "constraints": [],
+    "answer": {
+      "expr": "VB - I * r",
+      "unit": "V",
+      "sigFigs": 3
+    },
+    "distractors": [
+      {
+        "expr": "VB",
+        "misconception": "M-TERMINAL-EQUALS-EMF"
+      },
+      {
+        "expr": "I * r",
+        "misconception": "M-LOST-VOLTS"
+      },
+      {
+        "expr": "VB + I * r",
+        "misconception": "M-EMF-SIGN"
+      }
+    ],
+    "workshop": {
+      "diagramChoices": [
+        "terminal-voltmeter",
+        "closed-circuit-internal-r",
+        "open-circuit"
+      ],
+      "correctDiagram": "terminal-voltmeter",
+      "lawChoices": [
+        "V = V_B - I\\,r",
+        "V = V_B",
+        "V = V_B + I\\,r",
+        "V = I\\,r"
+      ],
+      "correctLaw": "V = V_B - I\\,r",
+      "inventory": [
+        {
+          "symbol": "V_B",
+          "var": "VB",
+          "unit": "V"
+        },
+        {
+          "symbol": "r",
+          "var": "r",
+          "unit": "Ω"
+        },
+        {
+          "symbol": "R",
+          "var": "R",
+          "unit": "Ω"
+        }
+      ],
+      "unknown": "V",
+      "hiddenGiven": "التيار مش معطى: احسبه الأول من $I = \\frac{V_B}{R + r}$",
+      "sanityCheck": "جهد القطبين والتيار شغال لازم أقل من القوة الدافعة، بس قريب منها",
+      "sanityExpr": "x < VB and x > VB / 2"
+    },
+    "hints": [
+      "جزء من القوة الدافعة بيضيع جوه البطارية لما التيار يعدّي. $V = V_B - I\\,r$.",
+      "المعطى الخفي التيار: $I = \\frac{V_B}{R + r}$ = {VB} ÷ {Rt} = {I} أمبير.",
+      "الضايع = {I} × {r} = {lost} فولت. اطرحه من {VB}."
+    ],
+    "solutionSteps": {
+      "draw": "بطارية (V_B و r) ومقاومة R، وفولتميتر بين قطبي البطارية",
+      "classify": "الفصل 1: قانون أوم للدائرة المغلقة + $V = V_B - I\\,r$",
+      "inventory": "$V_B = @VB\\,V$ · $r = @r\\,\\Omega$ · $R = @R\\,\\Omega$ · المطلوب: $V$",
+      "compute": "$I = \\frac{@VB}{@Rt} = @I\\,A$ ، $V = @VB - @I \\times @r = @answer\\,V$",
+      "check": "أقل من {VB} بشوية، وتساوي كمان $I \\times R$ = {answer}"
+    }
+  },
+  {
+    "id": "ch01.internal-resistance",
+    "chapter": 1,
+    "lesson": "L07",
+    "status": "draft",
+    "title": "حساب المقاومة الداخلية",
+    "marks": 1,
+    "cognitiveLevel": "hard",
+    "targetSeconds": 200,
+    "stem": "بطارية قوتها الدافعة {VB} فولت وُصّلت بمقاومة خارجية {R} أوم فمرّ في الدائرة تيار شدته {I} أمبير. احسب المقاومة الداخلية للبطارية.",
+    "variables": {
+      "I": {
+        "values": [
+          0.5,
+          1,
+          1.5,
+          2,
+          2.5,
+          3
+        ]
+      },
+      "R": {
+        "values": [
+          2,
+          4,
+          5,
+          5.5,
+          9.5,
+          11.5
+        ]
+      },
+      "rTrue": {
+        "values": [
+          0.5,
+          1,
+          1.5
+        ]
+      }
+    },
+    "derived": {
+      "VB": "I * (R + rTrue)",
+      "Rt": "R + rTrue"
+    },
+    "constraints": [
+      "I * (R + rTrue) <= 24",
+      "I * (R + rTrue) >= 1.5"
+    ],
+    "answer": {
+      "expr": "VB / I - R",
+      "unit": "Ω",
+      "sigFigs": 3
+    },
+    "distractors": [
+      {
+        "expr": "VB / I",
+        "misconception": "M-IGNORE-INTERNAL-R"
+      },
+      {
+        "expr": "VB / I + R",
+        "misconception": "M-EMF-SIGN"
+      },
+      {
+        "expr": "(VB - I * R) * I",
+        "misconception": "M-OHM-INVERTED"
+      }
+    ],
+    "workshop": {
+      "diagramChoices": [
+        "closed-circuit-internal-r",
+        "single-resistor",
+        "terminal-voltmeter"
+      ],
+      "correctDiagram": "closed-circuit-internal-r",
+      "lawChoices": [
+        "I = \\frac{V_B}{R + r}",
+        "I = \\frac{V_B}{R}",
+        "I = \\frac{V_B}{R - r}",
+        "V = V_B - I\\,r"
+      ],
+      "correctLaw": "I = \\frac{V_B}{R + r}",
+      "inventory": [
+        {
+          "symbol": "V_B",
+          "var": "VB",
+          "unit": "V"
+        },
+        {
+          "symbol": "R",
+          "var": "R",
+          "unit": "Ω"
+        },
+        {
+          "symbol": "I",
+          "var": "I",
+          "unit": "A"
+        }
+      ],
+      "unknown": "r",
+      "hiddenGiven": "من قانون الدائرة المغلقة: $R + r = \\frac{V_B}{I}$",
+      "sanityCheck": "المقاومة الداخلية لازم تكون صغيرة وأقل من المقاومة الخارجية",
+      "sanityExpr": "x > 0 and x < R"
+    },
+    "hints": [
+      "قانون الدائرة المغلقة $I = \\frac{V_B}{R + r}$ فيه مجهول واحد: r.",
+      "اضرب طرفين في وسطين: $R + r = \\frac{V_B}{I}$ = {VB} ÷ {I} = {Rt} أوم.",
+      "المقاومة الكلية {Rt}، منها {R} خارجية. الباقي كام؟"
+    ],
+    "solutionSteps": {
+      "draw": "بطارية ليها مقاومة داخلية، موصّلة بمقاومة خارجية",
+      "classify": "الفصل 1: قانون أوم للدائرة المغلقة",
+      "inventory": "$V_B = @VB\\,V$ · $R = @R\\,\\Omega$ · $I = @I\\,A$ · المطلوب: $r$",
+      "compute": "$R + r = \\frac{@VB}{@I} = @Rt$ ، $r = @Rt - @R = @answer\\,\\Omega$",
+      "check": "مقاومة داخلية صغيرة، منطقي"
+    }
+  },
+  {
+    "id": "ch01.open-voltmeter",
+    "chapter": 1,
+    "lesson": "L07",
+    "status": "draft",
+    "title": "قراءة الفولتميتر والمفتاح مفتوح",
+    "marks": 1,
+    "cognitiveLevel": "easy",
+    "targetSeconds": 90,
+    "stem": "دائرة فيها بطارية قوتها الدافعة {VB} فولت ومقاومتها الداخلية {r} أوم، ومقاومة خارجية {R} أوم، ومفتاح. وُصّل فولتميتر (مقاومته لا نهائية) بين قطبي البطارية. احسب قراءة الفولتميتر والمفتاح مفتوح.",
+    "variables": {
+      "VB": {
+        "values": [
+          1.5,
+          3,
+          4.5,
+          6,
+          9,
+          12,
+          15,
+          24
+        ]
+      },
+      "r": {
+        "values": [
+          0.1,
+          0.2,
+          0.3,
+          0.5
+        ]
+      },
+      "R": {
+        "values": [
+          2.7,
+          3.9,
+          4.7,
+          5.5,
+          9.5
+        ]
+      }
+    },
+    "constraints": [],
+    "answer": {
+      "expr": "VB",
+      "unit": "V",
+      "sigFigs": 3
+    },
+    "distractors": [
+      {
+        "expr": "VB * R / (R + r)",
+        "misconception": "M-OPEN-CIRCUIT-DROP"
+      },
+      {
+        "expr": "VB / (R + r)",
+        "misconception": "M-OHM-INVERTED"
+      },
+      {
+        "expr": "VB - r",
+        "misconception": "M-OPEN-CIRCUIT-DROP"
+      }
+    ],
+    "workshop": {
+      "diagramChoices": [
+        "open-circuit",
+        "closed-circuit-internal-r",
+        "series-two-resistors"
+      ],
+      "correctDiagram": "open-circuit",
+      "lawChoices": [
+        "V = V_B - I\\,r,\\; I = 0",
+        "V = 0",
+        "V = I\\,R",
+        "I = \\frac{V_B}{R + r}"
+      ],
+      "correctLaw": "V = V_B - I\\,r,\\; I = 0",
+      "inventory": [
+        {
+          "symbol": "V_B",
+          "var": "VB",
+          "unit": "V"
+        },
+        {
+          "symbol": "r",
+          "var": "r",
+          "unit": "Ω"
+        },
+        {
+          "symbol": "R",
+          "var": "R",
+          "unit": "Ω"
+        }
+      ],
+      "unknown": "V",
+      "hiddenGiven": "المفتاح مفتوح يعني مفيش تيار: $I = 0$، فمفيش جهد ضايع",
+      "sanityCheck": "مع مفيش تيار، القراءة لازم تساوي القوة الدافعة بالظبط",
+      "sanityExpr": "abs(x - VB) < 1e-9"
+    },
+    "hints": [
+      "الدائرة مفتوحة، يعني التيار صفر. إيه اللي بيحصل للجهد الضايع $I\\,r$؟",
+      "$V = V_B - I\\,r$ ومع $I = 0$ يبقى الضايع صفر. الـ R و r هنا ملهمش لازمة (فخ!).",
+      "القراءة = القوة الدافعة نفسها = {VB} فولت."
+    ],
+    "solutionSteps": {
+      "draw": "بطارية ومقاومة ومفتاح مفتوح، وفولتميتر على قطبي البطارية",
+      "classify": "الفصل 1: القوة الدافعة = فرق الجهد بين القطبين في حالة عدم مرور تيار",
+      "inventory": "$V_B = @VB\\,V$ · $I = 0$ · المطلوب: قراءة الفولتميتر",
+      "compute": "$V = @VB - 0 \\times @r = @answer\\,V$",
+      "check": "ده بالظبط تعريف القوة الدافعة في الكتاب"
+    }
+  }
+]

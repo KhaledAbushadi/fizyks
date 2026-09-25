@@ -1,0 +1,65 @@
+{
+  "intro": "15 سؤال سريع عشان نعرف نبدأ منين. مش امتحان، ومفيش درجات. لو مش عارف، اختار \"مش عارف\" عادي.",
+  "items": [
+    {
+      "skill": "gym.prefixes",
+      "template": "gym.prefix.milli"
+    },
+    {
+      "skill": "gym.prefixes",
+      "template": "gym.prefix.kilo"
+    },
+    {
+      "skill": "gym.sci",
+      "template": "gym.sci.small"
+    },
+    {
+      "skill": "gym.sci",
+      "template": "gym.sci.multiply"
+    },
+    {
+      "skill": "gym.rearrange",
+      "rearrange": "gym.rearrange.ohm-R"
+    },
+    {
+      "skill": "gym.calculator",
+      "template": "gym.calc.divide"
+    },
+    {
+      "skill": "ch01.current-from-charge",
+      "template": "ch01.current-from-charge"
+    },
+    {
+      "skill": "ch01.voltage-from-work",
+      "template": "ch01.voltage-from-work"
+    },
+    {
+      "skill": "ch01.ohm-current",
+      "template": "ch01.ohm-current"
+    },
+    {
+      "skill": "ch01.resistance-from-resistivity",
+      "template": "ch01.resistance-from-resistivity"
+    },
+    {
+      "skill": "ch01.series-equivalent",
+      "template": "ch01.series-equivalent"
+    },
+    {
+      "skill": "ch01.parallel-two",
+      "template": "ch01.parallel-two"
+    },
+    {
+      "skill": "ch01.closed-circuit-current",
+      "template": "ch01.closed-circuit-current"
+    },
+    {
+      "skill": "ch01.terminal-voltage",
+      "template": "ch01.terminal-voltage"
+    },
+    {
+      "skill": "ch01.kirchhoff-junction",
+      "template": "ch01.kirchhoff-junction"
+    }
+  ]
+}

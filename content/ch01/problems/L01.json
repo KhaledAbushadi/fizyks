@@ -1,0 +1,320 @@
+[
+  {
+    "id": "ch01.current-from-charge",
+    "chapter": 1,
+    "lesson": "L01",
+    "status": "draft",
+    "title": "شدة التيار من الشحنة والزمن",
+    "marks": 1,
+    "cognitiveLevel": "easy",
+    "targetSeconds": 120,
+    "stem": "تمر شحنة كهربية مقدارها {Q} كولوم خلال مقطع سلك في زمن قدره {t} ثانية. احسب شدة التيار الكهربي المار في السلك.",
+    "variables": {
+      "Q": {
+        "values": [
+          2,
+          3,
+          4,
+          5,
+          6,
+          8,
+          10,
+          12,
+          15,
+          18,
+          20,
+          24,
+          30,
+          36,
+          40,
+          45,
+          60,
+          90,
+          120
+        ]
+      },
+      "t": {
+        "values": [
+          2,
+          3,
+          4,
+          5,
+          6,
+          8,
+          10,
+          12,
+          15,
+          20,
+          30,
+          60
+        ]
+      }
+    },
+    "constraints": [
+      "Q / t >= 0.1",
+      "Q / t <= 20"
+    ],
+    "answer": {
+      "expr": "Q / t",
+      "unit": "A",
+      "sigFigs": 3
+    },
+    "distractors": [
+      {
+        "expr": "Q * t",
+        "misconception": "M-FORMULA-INVERTED"
+      },
+      {
+        "expr": "t / Q",
+        "misconception": "M-FORMULA-INVERTED"
+      }
+    ],
+    "workshop": {
+      "diagramChoices": [
+        "charge-flow",
+        "single-resistor",
+        "open-circuit"
+      ],
+      "correctDiagram": "charge-flow",
+      "lawChoices": [
+        "I = \\frac{Q}{t}",
+        "I = Q \\times t",
+        "V = \\frac{W}{Q}",
+        "I = \\frac{V}{R}"
+      ],
+      "correctLaw": "I = \\frac{Q}{t}",
+      "inventory": [
+        {
+          "symbol": "Q",
+          "var": "Q",
+          "unit": "C"
+        },
+        {
+          "symbol": "t",
+          "var": "t",
+          "unit": "s"
+        }
+      ],
+      "unknown": "I",
+      "hiddenGiven": "الزمن لازم يكون بالثانية، وهو هنا بالثانية فعلاً",
+      "sanityCheck": "لو الشحنة أكبر من عدد الثواني، التيار لازم يطلع أكبر من 1 أمبير، ولو أصغر يطلع أقل من 1",
+      "sanityExpr": "(Q > t) == (x > 1)"
+    },
+    "hints": [
+      "شدة التيار = كمية الشحنة اللي بتعدّي في كل ثانية. ده تعريف شدة التيار.",
+      "القانون $I = \\frac{Q}{t}$: الشحنة فوق، والزمن تحت. الوحدة أمبير = كولوم ÷ ثانية.",
+      "اقسم {Q} على {t}. الناتج كام؟"
+    ],
+    "solutionSteps": {
+      "draw": "سلك بتعدّي فيه شحنات من مقطع واحد",
+      "classify": "الفصل 1: تعريف شدة التيار $I = \\frac{Q}{t}$",
+      "inventory": "$Q = @Q\\,C$ · $t = @t\\,s$ · المطلوب: $I$",
+      "compute": "$I = \\frac{@Q}{@t} = @answer\\,A$",
+      "check": "الوحدة كولوم ÷ ثانية = أمبير، والرقم منطقي"
+    }
+  },
+  {
+    "id": "ch01.charge-from-current",
+    "chapter": 1,
+    "lesson": "L01",
+    "status": "draft",
+    "title": "الشحنة من التيار والزمن بالدقايق",
+    "marks": 1,
+    "cognitiveLevel": "easy",
+    "targetSeconds": 150,
+    "stem": "يمر تيار كهربي شدته {I} أمبير في سلك لمدة {tmin} دقيقة. احسب كمية الكهربية (الشحنة) التي تمر خلال مقطع السلك.",
+    "variables": {
+      "I": {
+        "values": [
+          0.5,
+          1,
+          1.5,
+          2,
+          2.5,
+          3,
+          4,
+          5,
+          6
+        ]
+      },
+      "tmin": {
+        "values": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          10
+        ]
+      }
+    },
+    "derived": {
+      "t": "tmin * 60"
+    },
+    "constraints": [],
+    "answer": {
+      "expr": "I * t",
+      "unit": "C",
+      "sigFigs": 3
+    },
+    "distractors": [
+      {
+        "expr": "I * tmin",
+        "misconception": "M-TIME-MINUTES"
+      },
+      {
+        "expr": "I / t",
+        "misconception": "M-FORMULA-INVERTED"
+      },
+      {
+        "expr": "t / I",
+        "misconception": "M-FORMULA-INVERTED"
+      }
+    ],
+    "workshop": {
+      "diagramChoices": [
+        "charge-flow",
+        "single-resistor",
+        "series-two-resistors"
+      ],
+      "correctDiagram": "charge-flow",
+      "lawChoices": [
+        "Q = I \\times t",
+        "Q = \\frac{I}{t}",
+        "V = \\frac{W}{Q}",
+        "V = I\\,R"
+      ],
+      "correctLaw": "Q = I \\times t",
+      "inventory": [
+        {
+          "symbol": "I",
+          "var": "I",
+          "unit": "A"
+        },
+        {
+          "symbol": "t",
+          "var": "tmin",
+          "unit": "min"
+        }
+      ],
+      "unknown": "Q",
+      "hiddenGiven": "الزمن بالدقايق! لازم يتحوّل لثواني: اضرب في 60",
+      "sanityCheck": "الشحنة بالكولوم لازم تطلع أكبر بكتير من شدة التيار، لأن الزمن بالثواني رقم كبير",
+      "sanityExpr": "x >= I * 59"
+    },
+    "hints": [
+      "المطلوب الشحنة. من تعريف شدة التيار $I = \\frac{Q}{t}$ يبقى $Q = I\\,t$.",
+      "الزمن مكتوب بالدقايق. الأمبير = كولوم في الثانية، فحوّل: {tmin} دقيقة = {t} ثانية.",
+      "اضرب {I} × {t}. الناتج كام كولوم؟"
+    ],
+    "solutionSteps": {
+      "draw": "سلك بيعدّي فيه تيار ثابت لمدة معينة",
+      "classify": "الفصل 1: تعريف شدة التيار، ومنه $Q = I\\,t$",
+      "inventory": "$I = @I\\,A$ · $t = @tmin\\,min = @t\\,s$ · المطلوب: $Q$",
+      "compute": "$Q = @I \\times @t = @answer\\,C$",
+      "check": "كولوم = أمبير × ثانية. والرقم أكبر من التيار بكتير، منطقي"
+    }
+  },
+  {
+    "id": "ch01.electrons-count",
+    "chapter": 1,
+    "lesson": "L01",
+    "status": "draft",
+    "title": "عدد الإلكترونات المارة",
+    "marks": 1,
+    "cognitiveLevel": "medium",
+    "targetSeconds": 210,
+    "stem": "يمر تيار شدته {ImA} مللي أمبير في سلك لمدة {t} ثانية. احسب عدد الإلكترونات المارة خلال مقطع السلك، علماً بأن شحنة الإلكترون $1.6\\times10^{-19}$ كولوم.",
+    "variables": {
+      "ImA": {
+        "values": [
+          16,
+          32,
+          40,
+          80,
+          160,
+          200,
+          320,
+          400,
+          800
+        ]
+      },
+      "t": {
+        "values": [
+          1,
+          2,
+          5,
+          10,
+          20
+        ]
+      }
+    },
+    "derived": {
+      "I": "ImA / 1000",
+      "Q": "ImA / 1000 * t"
+    },
+    "constraints": [],
+    "answer": {
+      "expr": "I * t / qe",
+      "unit": "e⁻",
+      "sigFigs": 3
+    },
+    "distractors": [
+      {
+        "expr": "ImA * t / qe",
+        "misconception": "M-PREFIX-MILLI"
+      },
+      {
+        "expr": "I * t",
+        "misconception": "M-CHARGE-NOT-ELECTRONS"
+      },
+      {
+        "expr": "I * t * qe",
+        "misconception": "M-FORMULA-INVERTED"
+      }
+    ],
+    "workshop": {
+      "diagramChoices": [
+        "charge-flow",
+        "single-resistor",
+        "open-circuit"
+      ],
+      "correctDiagram": "charge-flow",
+      "lawChoices": [
+        "N = \\frac{Q}{e}",
+        "N = Q \\times e",
+        "I = \\frac{Q}{t}",
+        "I = \\frac{V}{R}"
+      ],
+      "correctLaw": "N = \\frac{Q}{e}",
+      "inventory": [
+        {
+          "symbol": "I",
+          "var": "ImA",
+          "unit": "mA"
+        },
+        {
+          "symbol": "t",
+          "var": "t",
+          "unit": "s"
+        }
+      ],
+      "unknown": "N",
+      "hiddenGiven": "مللي أمبير لازم تتحوّل لأمبير (÷1000)، وشحنة الإلكترون ثابت معروف",
+      "sanityCheck": "عدد الإلكترونات لازم يطلع رقم ضخم جداً (أسّه موجب وكبير)",
+      "sanityExpr": "x > 1e12"
+    },
+    "hints": [
+      "المسألة على خطوتين: الأول الشحنة $Q = I\\,t$، وبعدين عدد الإلكترونات $N = \\frac{Q}{e}$.",
+      "التيار بالمللي أمبير: {ImA} مللي أمبير = {I} أمبير. وكل إلكترون شحنته $1.6\\times10^{-19}$ كولوم.",
+      "الشحنة = {I} × {t} = {Q} كولوم. اقسمها على $1.6\\times10^{-19}$. كام؟"
+    ],
+    "solutionSteps": {
+      "draw": "سلك بتعدّي فيه إلكترونات، وكل إلكترون شايل شحنة صغيرة جداً",
+      "classify": "الفصل 1: $Q = I\\,t$ ثم $N = \\frac{Q}{e}$",
+      "inventory": "$I = @ImA\\,mA = @I\\,A$ · $t = @t\\,s$ · $e = 1.6\\times10^{-19}\\,C$ · المطلوب: $N$",
+      "compute": "$Q = @I \\times @t = @Q\\,C$ ، $N = \\frac{@Q}{1.6\\times10^{-19}} = @answer$ إلكترون",
+      "check": "رقم ضخم جداً، ومنطقي لأن شحنة الإلكترون الواحد صغيرة جداً"
+    }
+  }
+]

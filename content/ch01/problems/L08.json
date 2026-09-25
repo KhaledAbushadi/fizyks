@@ -1,0 +1,403 @@
+[
+  {
+    "id": "ch01.kirchhoff-junction",
+    "chapter": 1,
+    "lesson": "L08",
+    "status": "draft",
+    "title": "قانون كيرشوف الأول عند نقطة",
+    "marks": 1,
+    "cognitiveLevel": "easy",
+    "targetSeconds": 120,
+    "stem": "عند نقطة تفرع في دائرة كهربية، تدخل ثلاثة تيارات شدتها {I1} أمبير و{I2} أمبير و{I3} أمبير، ويخرج تيار شدته {I4} أمبير وتيار آخر مجهول I. احسب شدة التيار I.",
+    "variables": {
+      "I1": {
+        "values": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ]
+      },
+      "I2": {
+        "values": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ]
+      },
+      "I3": {
+        "values": [
+          0.5,
+          1,
+          2,
+          3
+        ]
+      },
+      "I4": {
+        "values": [
+          2,
+          3,
+          4,
+          5,
+          6,
+          8
+        ]
+      }
+    },
+    "derived": {
+      "In": "I1 + I2 + I3"
+    },
+    "constraints": [
+      "I1 + I2 + I3 - I4 >= 0.5"
+    ],
+    "answer": {
+      "expr": "I1 + I2 + I3 - I4",
+      "unit": "A",
+      "sigFigs": 3
+    },
+    "distractors": [
+      {
+        "expr": "I1 + I2 + I3 + I4",
+        "misconception": "M-JUNCTION-SIGN"
+      },
+      {
+        "expr": "I1 + I2 + I3",
+        "misconception": "M-MISSED-VALUE"
+      },
+      {
+        "expr": "(I1 + I2 + I3 + I4) / 5",
+        "misconception": "M-AVERAGE-RESISTANCE"
+      }
+    ],
+    "workshop": {
+      "diagramChoices": [
+        "kirchhoff-junction",
+        "parallel-two-resistors",
+        "kirchhoff-two-loops"
+      ],
+      "correctDiagram": "kirchhoff-junction",
+      "lawChoices": [
+        "\\Sigma I_{in} = \\Sigma I_{out}",
+        "\\Sigma I_{in} + \\Sigma I_{out} = 0",
+        "I = \\frac{V}{R}",
+        "\\Sigma V_B = \\Sigma I\\,R"
+      ],
+      "correctLaw": "\\Sigma I_{in} = \\Sigma I_{out}",
+      "inventory": [
+        {
+          "symbol": "I_1",
+          "var": "I1",
+          "unit": "A"
+        },
+        {
+          "symbol": "I_2",
+          "var": "I2",
+          "unit": "A"
+        },
+        {
+          "symbol": "I_3",
+          "var": "I3",
+          "unit": "A"
+        },
+        {
+          "symbol": "I_4",
+          "var": "I4",
+          "unit": "A"
+        }
+      ],
+      "unknown": "I",
+      "hiddenGiven": "الشحنة مش بتتراكم عند النقطة: الداخل كله لازم يخرج",
+      "sanityCheck": "التيار المجهول لازم يكون أقل من مجموع الداخل",
+      "sanityExpr": "x > 0 and x < I1 + I2 + I3"
+    },
+    "hints": [
+      "نقطة تفرع وتيارات داخلة وخارجة: ده قانون كيرشوف الأول.",
+      "مجموع الداخل = مجموع الخارج. الداخل = {I1} + {I2} + {I3} = {In} أمبير.",
+      "{In} = {I4} + I. يبقى I كام؟"
+    ],
+    "solutionSteps": {
+      "draw": "نقطة (عقدة) داخل عليها 3 تيارات وخارج منها 2",
+      "classify": "الفصل 1: قانون كيرشوف الأول (حفظ الشحنة)",
+      "inventory": "داخل: $@I1, @I2, @I3\\,A$ · خارج: $@I4\\,A$ و $I$ · المطلوب: $I$",
+      "compute": "$@I1 + @I2 + @I3 = @I4 + I$ ⇒ $I = @answer\\,A$",
+      "check": "اتجاهه خارج من النقطة، وقيمته موجبة، منطقي"
+    }
+  },
+  {
+    "id": "ch01.kirchhoff-single-loop",
+    "chapter": 1,
+    "lesson": "L08",
+    "status": "draft",
+    "title": "مسار مغلق فيه بطاريتان متعاكستان",
+    "marks": 1,
+    "cognitiveLevel": "medium",
+    "targetSeconds": 180,
+    "stem": "دائرة مغلقة واحدة فيها بطاريتان متعاكستان في الاتجاه: قوتهما الدافعة {E1} فولت و{E2} فولت (مقاومتاهما الداخلية مهملة)، ومقاومتان {R1} أوم و{R2} أوم على التوالي. احسب شدة التيار في الدائرة.",
+    "variables": {
+      "E1": {
+        "values": [
+          6,
+          9,
+          12,
+          15,
+          20,
+          24
+        ]
+      },
+      "E2": {
+        "values": [
+          1.5,
+          3,
+          4.5,
+          6,
+          9
+        ]
+      },
+      "R1": {
+        "values": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          10
+        ]
+      },
+      "R2": {
+        "values": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          8,
+          10
+        ]
+      }
+    },
+    "derived": {
+      "Enet": "E1 - E2"
+    },
+    "constraints": [
+      "E1 > E2 * 1.2",
+      "(E1 - E2) / (R1 + R2) <= 8"
+    ],
+    "answer": {
+      "expr": "(E1 - E2) / (R1 + R2)",
+      "unit": "A",
+      "sigFigs": 3
+    },
+    "distractors": [
+      {
+        "expr": "(E1 + E2) / (R1 + R2)",
+        "misconception": "M-EMF-SIGN"
+      },
+      {
+        "expr": "(E1 - E2) / R1",
+        "misconception": "M-MISSED-VALUE"
+      },
+      {
+        "expr": "(E1 - E2) * (R1 + R2)",
+        "misconception": "M-OHM-INVERTED"
+      }
+    ],
+    "workshop": {
+      "diagramChoices": [
+        "kirchhoff-single-loop",
+        "series-two-resistors",
+        "kirchhoff-two-loops"
+      ],
+      "correctDiagram": "kirchhoff-single-loop",
+      "lawChoices": [
+        "\\Sigma V_B = \\Sigma I\\,R",
+        "\\Sigma I = 0",
+        "I = \\frac{E_1 + E_2}{R_1 + R_2}",
+        "V = I\\,R"
+      ],
+      "correctLaw": "\\Sigma V_B = \\Sigma I\\,R",
+      "inventory": [
+        {
+          "symbol": "E_1",
+          "var": "E1",
+          "unit": "V"
+        },
+        {
+          "symbol": "E_2",
+          "var": "E2",
+          "unit": "V"
+        },
+        {
+          "symbol": "R_1",
+          "var": "R1",
+          "unit": "Ω"
+        },
+        {
+          "symbol": "R_2",
+          "var": "R2",
+          "unit": "Ω"
+        }
+      ],
+      "unknown": "I",
+      "hiddenGiven": "البطاريتين متعاكستين: القوة الدافعة الفعلية = الفرق بينهم",
+      "sanityCheck": "التيار لازم أقل من لو الكبيرة لوحدها في الدائرة",
+      "sanityExpr": "x < E1 / (R1 + R2)"
+    },
+    "hints": [
+      "مسار مغلق فيه أكتر من بطارية: قانون كيرشوف التاني $\\Sigma V_B = \\Sigma I\\,R$.",
+      "البطاريتين عكس بعض: $\\Sigma V_B$ = {E1} − {E2} = {Enet} فولت. والمقاومات على التوالي.",
+      "اقسم {Enet} على ({R1} + {R2}). كام أمبير؟"
+    ],
+    "solutionSteps": {
+      "draw": "مسار واحد مقفول فيه بطاريتين متعاكستين ومقاومتين",
+      "classify": "الفصل 1: قانون كيرشوف الثاني (حفظ الطاقة)",
+      "inventory": "$E_1 = @E1$ · $E_2 = @E2\\,V$ · $R_1 = @R1$ · $R_2 = @R2\\,\\Omega$ · المطلوب: $I$",
+      "compute": "$@E1 - @E2 = I (@R1 + @R2)$ ⇒ $I = @answer\\,A$",
+      "check": "الإشارة موجبة، فالتيار في اتجاه البطارية الأكبر ({E1} فولت)"
+    }
+  },
+  {
+    "id": "ch01.kirchhoff-two-loops",
+    "chapter": 1,
+    "lesson": "L08",
+    "status": "draft",
+    "title": "دائرة بمسارين (كيرشوف كامل)",
+    "marks": 2,
+    "cognitiveLevel": "hard",
+    "targetSeconds": 360,
+    "stem": "في الدائرة الموضحة: الفرع الأيسر فيه بطارية {E1} فولت ومقاومة {R1} أوم، والفرع الأيمن فيه بطارية {E2} فولت ومقاومة {R2} أوم، والفرع الأوسط فيه مقاومة {R3} أوم. البطاريتان قطباهما الموجبان لأعلى ومقاومتاهما الداخلية مهملة. احسب شدة التيار المار في الفرع الأوسط.",
+    "variables": {
+      "E1": {
+        "values": [
+          2,
+          4,
+          6,
+          9,
+          12
+        ]
+      },
+      "E2": {
+        "values": [
+          2,
+          3,
+          4,
+          6
+        ]
+      },
+      "R1": {
+        "values": [
+          1,
+          2,
+          3,
+          4
+        ]
+      },
+      "R2": {
+        "values": [
+          1,
+          2,
+          3,
+          4,
+          6
+        ]
+      },
+      "R3": {
+        "values": [
+          2,
+          3,
+          4,
+          5,
+          6
+        ]
+      }
+    },
+    "derived": {
+      "num": "E1 * R2 + E2 * R1",
+      "den": "R1 * R2 + R1 * R3 + R2 * R3",
+      "I1": "(E1 * (R2 + R3) - E2 * R3) / (R1 * R2 + R1 * R3 + R2 * R3)",
+      "I2": "(E2 * (R1 + R3) - E1 * R3) / (R1 * R2 + R1 * R3 + R2 * R3)"
+    },
+    "constraints": [],
+    "answer": {
+      "expr": "(E1 * R2 + E2 * R1) / (R1 * R2 + R1 * R3 + R2 * R3)",
+      "unit": "A",
+      "sigFigs": 3
+    },
+    "distractors": [
+      {
+        "expr": "(E1 + E2) / (R1 + R2 + R3)",
+        "misconception": "M-SERIES-ALL"
+      },
+      {
+        "expr": "E1 / (R1 + R3)",
+        "misconception": "M-MISSED-VALUE"
+      },
+      {
+        "expr": "(E1 - E2) / (R1 + R2)",
+        "misconception": "M-EMF-SIGN"
+      }
+    ],
+    "workshop": {
+      "diagramChoices": [
+        "kirchhoff-two-loops",
+        "kirchhoff-single-loop",
+        "mixed-parallel-series"
+      ],
+      "correctDiagram": "kirchhoff-two-loops",
+      "lawChoices": [
+        "I_3 = I_1 + I_2,\\; \\Sigma V_B = \\Sigma I\\,R",
+        "I = \\frac{E_1 + E_2}{R_1 + R_2 + R_3}",
+        "I_3 = I_1 - I_2",
+        "I = \\frac{V}{R}"
+      ],
+      "correctLaw": "I_3 = I_1 + I_2,\\; \\Sigma V_B = \\Sigma I\\,R",
+      "inventory": [
+        {
+          "symbol": "E_1",
+          "var": "E1",
+          "unit": "V"
+        },
+        {
+          "symbol": "R_1",
+          "var": "R1",
+          "unit": "Ω"
+        },
+        {
+          "symbol": "E_2",
+          "var": "E2",
+          "unit": "V"
+        },
+        {
+          "symbol": "R_2",
+          "var": "R2",
+          "unit": "Ω"
+        },
+        {
+          "symbol": "R_3",
+          "var": "R3",
+          "unit": "Ω"
+        }
+      ],
+      "unknown": "I_3",
+      "hiddenGiven": "3 مجاهيل ($I_1$ و$I_2$ و$I_3$) محتاجة 3 معادلات: عقدة + مسارين",
+      "sanityCheck": "التيار في الفرع الأوسط لازم أقل من (E1 ÷ R3) + (E2 ÷ R3)",
+      "sanityExpr": "x > 0 and x < (E1 + E2) / R3"
+    },
+    "hints": [
+      "دائرة فيها مسارين وبطاريتين: كيرشوف الأول عند العقدة، والتاني لكل مسار.",
+      "عند العقدة: $I_3 = I_1 + I_2$. المسار الأيسر: $E_1 = R_1 I_1 + R_3 I_3$. المسار الأيمن: $E_2 = R_2 I_2 + R_3 I_3$.",
+      "عوّض: ${E1} = {R1} I_1 + {R3} I_3$ و ${E2} = {R2} I_2 + {R3} I_3$. طلّع $I_1$ و$I_2$ بدلالة $I_3$ وعوّض في العقدة."
+    ],
+    "solutionSteps": {
+      "draw": "دائرة بتلات فروع: يسار (E1, R1) ووسط (R3) ويمين (E2, R2)",
+      "classify": "الفصل 1: قانونا كيرشوف",
+      "inventory": "$E_1 = @E1\\,V$ · $R_1 = @R1$ · $E_2 = @E2\\,V$ · $R_2 = @R2$ · $R_3 = @R3\\,\\Omega$ · المطلوب: $I_3$",
+      "compute": "$I_3 = \\frac{E_1 R_2 + E_2 R_1}{R_1 R_2 + R_1 R_3 + R_2 R_3} = \\frac{@num}{@den} = @answer\\,A$",
+      "check": "$I_1 = @I1$ و $I_2 = @I2$ ومجموعهم = $I_3$. الإشارة السالبة لو ظهرت معناها الاتجاه عكس المفروض"
+    }
+  }
+]

@@ -1,0 +1,259 @@
+{
+  "id": "gym.prefixes",
+  "status": "draft",
+  "title": "البادئات",
+  "subtitle": "مللي، ميكرو، كيلو، ميجا",
+  "intro": [
+    "مللي (m) = ÷ 1000 = $10^{-3}$",
+    "ميكرو (µ) = ÷ مليون = $10^{-6}$",
+    "كيلو (k) = × 1000 = $10^{3}$",
+    "ميجا (M) = × مليون = $10^{6}$",
+    "قاعدة ذهبية: حوّل للوحدة الأساسية **قبل** ما تعوّض في أي قانون."
+  ],
+  "templates": [
+    {
+      "id": "gym.prefix.milli",
+      "chapter": 0,
+      "lesson": "gym",
+      "status": "draft",
+      "title": "مللي أمبير ← أمبير",
+      "marks": 1,
+      "cognitiveLevel": "easy",
+      "targetSeconds": 60,
+      "stem": "حوّل {x} مللي أمبير إلى أمبير.",
+      "variables": {
+        "x": {
+          "values": [
+            5,
+            20,
+            25,
+            40,
+            75,
+            120,
+            250,
+            350,
+            500,
+            750,
+            1500
+          ]
+        }
+      },
+      "constraints": [],
+      "answer": {
+        "expr": "x / 1000",
+        "unit": "A",
+        "sigFigs": 3
+      },
+      "distractors": [
+        {
+          "expr": "x * 1000",
+          "misconception": "M-PREFIX-MILLI"
+        },
+        {
+          "expr": "x / 100",
+          "misconception": "M-POWER-OF-TEN"
+        },
+        {
+          "expr": "x / 1e6",
+          "misconception": "M-PREFIX-MICRO"
+        }
+      ],
+      "hints": [
+        "مللي يعني جزء من ألف.",
+        "من مللي أمبير لأمبير: اقسم على 1000.",
+        "{x} ÷ 1000 = ؟"
+      ],
+      "solutionSteps": {
+        "draw": "",
+        "classify": "",
+        "inventory": "",
+        "compute": "$@x \\div 1000 = @answer\\,A$",
+        "check": "الأمبير أكبر من المللي، فالرقم لازم يصغر"
+      }
+    },
+    {
+      "id": "gym.prefix.micro",
+      "chapter": 0,
+      "lesson": "gym",
+      "status": "draft",
+      "title": "ميكرو ← الوحدة الأساسية",
+      "marks": 1,
+      "cognitiveLevel": "easy",
+      "targetSeconds": 60,
+      "stem": "حوّل {x} ميكرو أمبير إلى أمبير.",
+      "variables": {
+        "x": {
+          "values": [
+            2,
+            5,
+            8,
+            15,
+            35,
+            50,
+            75,
+            120,
+            250,
+            350,
+            640,
+            800
+          ]
+        }
+      },
+      "constraints": [],
+      "answer": {
+        "expr": "x * 1e-6",
+        "unit": "A",
+        "sigFigs": 3
+      },
+      "distractors": [
+        {
+          "expr": "x * 1e-3",
+          "misconception": "M-PREFIX-MILLI"
+        },
+        {
+          "expr": "x * 1e6",
+          "misconception": "M-PREFIX-MICRO"
+        },
+        {
+          "expr": "x * 1e-5",
+          "misconception": "M-POWER-OF-TEN"
+        }
+      ],
+      "hints": [
+        "ميكرو = $10^{-6}$، يعني جزء من مليون.",
+        "اضرب في $10^{-6}$.",
+        "{x} × 10^-6 = ؟"
+      ],
+      "solutionSteps": {
+        "draw": "",
+        "classify": "",
+        "inventory": "",
+        "compute": "$@x \\times 10^{-6} = @answer\\,A$",
+        "check": "رقم صغير جداً، منطقي"
+      }
+    },
+    {
+      "id": "gym.prefix.kilo",
+      "chapter": 0,
+      "lesson": "gym",
+      "status": "draft",
+      "title": "كيلو أوم ← أوم",
+      "marks": 1,
+      "cognitiveLevel": "easy",
+      "targetSeconds": 60,
+      "stem": "حوّل {x} كيلو أوم إلى أوم.",
+      "variables": {
+        "x": {
+          "values": [
+            0.47,
+            1,
+            1.2,
+            1.5,
+            2.2,
+            3.3,
+            4.7,
+            5.6,
+            6.8,
+            8.2,
+            10,
+            22,
+            47
+          ]
+        }
+      },
+      "constraints": [],
+      "answer": {
+        "expr": "x * 1000",
+        "unit": "Ω",
+        "sigFigs": 3
+      },
+      "distractors": [
+        {
+          "expr": "x / 1000",
+          "misconception": "M-PREFIX-KILO"
+        },
+        {
+          "expr": "x * 100",
+          "misconception": "M-POWER-OF-TEN"
+        },
+        {
+          "expr": "x * 1e6",
+          "misconception": "M-POWER-OF-TEN"
+        }
+      ],
+      "hints": [
+        "كيلو = ألف.",
+        "من كيلو أوم لأوم: اضرب في 1000.",
+        "{x} × 1000 = ؟"
+      ],
+      "solutionSteps": {
+        "draw": "",
+        "classify": "",
+        "inventory": "",
+        "compute": "$@x \\times 1000 = @answer\\,\\Omega$",
+        "check": "الأوم أصغر من الكيلو أوم، فالرقم يكبر"
+      }
+    },
+    {
+      "id": "gym.prefix.reverse",
+      "chapter": 0,
+      "lesson": "gym",
+      "status": "draft",
+      "title": "أمبير ← مللي أمبير",
+      "marks": 1,
+      "cognitiveLevel": "easy",
+      "targetSeconds": 60,
+      "stem": "حوّل {x} أمبير إلى مللي أمبير.",
+      "variables": {
+        "x": {
+          "values": [
+            0.002,
+            0.005,
+            0.015,
+            0.025,
+            0.04,
+            0.06,
+            0.12,
+            0.25,
+            0.35,
+            0.5,
+            0.75,
+            1.2
+          ]
+        }
+      },
+      "constraints": [],
+      "answer": {
+        "expr": "x * 1000",
+        "unit": "mA",
+        "sigFigs": 3
+      },
+      "distractors": [
+        {
+          "expr": "x / 1000",
+          "misconception": "M-PREFIX-MILLI"
+        },
+        {
+          "expr": "x * 100",
+          "misconception": "M-POWER-OF-TEN"
+        },
+        {
+          "expr": "x * 1e6",
+          "misconception": "M-PREFIX-MICRO"
+        }
+      ],
+      "hints": [
+        "المللي أصغر، فهتحتاج عدد أكبر منه.",
+        "من أمبير لمللي أمبير: اضرب في 1000.",
+        "{x} × 1000 = ؟"
+      ],
+      "solutionSteps": {
+        "draw": "",
+        "classify": "",
+        "inventory": "",
+        "compute": "$@x \\times 1000 = @answer\\,mA$",
+        "check": "المللي أصغر، فالرقم يكبر"
+      }
+    }
+  ]
+}

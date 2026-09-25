@@ -1,0 +1,320 @@
+[
+  {
+    "id": "ch01.ohm-current",
+    "chapter": 1,
+    "lesson": "L03",
+    "status": "draft",
+    "title": "قانون أوم: التيار",
+    "marks": 1,
+    "cognitiveLevel": "easy",
+    "targetSeconds": 90,
+    "stem": "مقاومة قيمتها {R} أوم، فرق الجهد بين طرفيها {V} فولت. احسب شدة التيار المار فيها.",
+    "variables": {
+      "R": {
+        "values": [
+          2,
+          3,
+          4,
+          5,
+          6,
+          8,
+          10,
+          12,
+          15,
+          20,
+          24,
+          30,
+          40,
+          50
+        ]
+      },
+      "V": {
+        "values": [
+          1.5,
+          3,
+          4.5,
+          6,
+          9,
+          12,
+          24
+        ]
+      }
+    },
+    "constraints": [
+      "V / R >= 0.05",
+      "V / R <= 10",
+      "V != R"
+    ],
+    "answer": {
+      "expr": "V / R",
+      "unit": "A",
+      "sigFigs": 3
+    },
+    "distractors": [
+      {
+        "expr": "V * R",
+        "misconception": "M-OHM-INVERTED"
+      },
+      {
+        "expr": "R / V",
+        "misconception": "M-OHM-INVERTED"
+      }
+    ],
+    "workshop": {
+      "diagramChoices": [
+        "single-resistor",
+        "series-two-resistors",
+        "open-circuit"
+      ],
+      "correctDiagram": "single-resistor",
+      "lawChoices": [
+        "I = \\frac{V}{R}",
+        "I = V \\times R",
+        "I = \\frac{R}{V}",
+        "I = \\frac{Q}{t}"
+      ],
+      "correctLaw": "I = \\frac{V}{R}",
+      "inventory": [
+        {
+          "symbol": "R",
+          "var": "R",
+          "unit": "Ω"
+        },
+        {
+          "symbol": "V",
+          "var": "V",
+          "unit": "V"
+        }
+      ],
+      "unknown": "I",
+      "hiddenGiven": "درجة الحرارة ثابتة، فقانون أوم ينطبق",
+      "sanityCheck": "لو الجهد أكبر من المقاومة، التيار أكبر من 1 أمبير، ولو أصغر يبقى أقل من 1",
+      "sanityExpr": "(V > R) == (x > 1)"
+    },
+    "hints": [
+      "فيه مقاومة وجهد، والمطلوب تيار: ده قانون أوم.",
+      "$V = I\\,R$ يعني $I = \\frac{V}{R}$. الجهد فوق دايماً.",
+      "اقسم {V} على {R}. كام أمبير؟"
+    ],
+    "solutionSteps": {
+      "draw": "مقاومة واحدة موصلة ببطارية",
+      "classify": "الفصل 1: قانون أوم $I = \\frac{V}{R}$",
+      "inventory": "$R = @R\\,\\Omega$ · $V = @V\\,V$ · المطلوب: $I$",
+      "compute": "$I = \\frac{@V}{@R} = @answer\\,A$",
+      "check": "فولت ÷ أوم = أمبير، والتيار في حدود معقولة"
+    }
+  },
+  {
+    "id": "ch01.ohm-resistance-ma",
+    "chapter": 1,
+    "lesson": "L03",
+    "status": "draft",
+    "title": "قانون أوم: المقاومة والتيار بالمللي",
+    "marks": 1,
+    "cognitiveLevel": "medium",
+    "targetSeconds": 150,
+    "stem": "يمر تيار شدته {ImA} مللي أمبير في مقاومة عندما يكون فرق الجهد بين طرفيها {V} فولت. احسب قيمة المقاومة.",
+    "variables": {
+      "ImA": {
+        "values": [
+          20,
+          25,
+          40,
+          50,
+          60,
+          75,
+          80,
+          100,
+          120,
+          150,
+          200,
+          250,
+          300,
+          400,
+          500
+        ]
+      },
+      "V": {
+        "values": [
+          1.5,
+          3,
+          4.5,
+          6,
+          9,
+          12
+        ]
+      }
+    },
+    "derived": {
+      "I": "ImA / 1000"
+    },
+    "constraints": [],
+    "answer": {
+      "expr": "V / I",
+      "unit": "Ω",
+      "sigFigs": 3
+    },
+    "distractors": [
+      {
+        "expr": "V / ImA",
+        "misconception": "M-PREFIX-MILLI"
+      },
+      {
+        "expr": "V * I",
+        "misconception": "M-OHM-INVERTED"
+      },
+      {
+        "expr": "I / V",
+        "misconception": "M-OHM-INVERTED"
+      }
+    ],
+    "workshop": {
+      "diagramChoices": [
+        "single-resistor",
+        "parallel-two-resistors",
+        "charge-flow"
+      ],
+      "correctDiagram": "single-resistor",
+      "lawChoices": [
+        "R = \\frac{V}{I}",
+        "R = V \\times I",
+        "R = \\frac{I}{V}",
+        "R = \\rho_e \\frac{\\ell}{A}"
+      ],
+      "correctLaw": "R = \\frac{V}{I}",
+      "inventory": [
+        {
+          "symbol": "I",
+          "var": "ImA",
+          "unit": "mA"
+        },
+        {
+          "symbol": "V",
+          "var": "V",
+          "unit": "V"
+        }
+      ],
+      "unknown": "R",
+      "hiddenGiven": "التيار بالمللي أمبير: لازم يتحوّل لأمبير (÷1000) قبل القسمة",
+      "sanityCheck": "تيار صغير (مللي) مع جهد عادي معناه مقاومة كبيرة: أكبر من الجهد نفسه",
+      "sanityExpr": "x > V"
+    },
+    "hints": [
+      "جهد وتيار، والمطلوب مقاومة: قانون أوم $R = \\frac{V}{I}$.",
+      "{ImA} مللي أمبير = {I} أمبير. حوّل قبل ما تقسم!",
+      "اقسم {V} على {I}. كام أوم؟"
+    ],
+    "solutionSteps": {
+      "draw": "مقاومة موصلة ببطارية وأميتر",
+      "classify": "الفصل 1: قانون أوم $R = \\frac{V}{I}$",
+      "inventory": "$I = @ImA\\,mA = @I\\,A$ · $V = @V\\,V$ · المطلوب: $R$",
+      "compute": "$R = \\frac{@V}{@I} = @answer\\,\\Omega$",
+      "check": "تيار صغير يعني مقاومة كبيرة، منطقي"
+    }
+  },
+  {
+    "id": "ch01.ohm-voltage-kohm",
+    "chapter": 1,
+    "lesson": "L03",
+    "status": "draft",
+    "title": "قانون أوم: الجهد بالكيلو أوم",
+    "marks": 1,
+    "cognitiveLevel": "medium",
+    "targetSeconds": 150,
+    "stem": "مقاومة قيمتها {RK} كيلو أوم يمر فيها تيار شدته {ImA} مللي أمبير. احسب فرق الجهد بين طرفيها.",
+    "variables": {
+      "RK": {
+        "values": [
+          1,
+          1.5,
+          2,
+          2.2,
+          3.3,
+          4.7,
+          5.6,
+          10
+        ]
+      },
+      "ImA": {
+        "values": [
+          0.5,
+          1,
+          1.5,
+          2,
+          2.5,
+          3,
+          5
+        ]
+      }
+    },
+    "derived": {
+      "R": "RK * 1000",
+      "I": "ImA / 1000"
+    },
+    "constraints": [
+      "RK * ImA <= 50"
+    ],
+    "answer": {
+      "expr": "I * R",
+      "unit": "V",
+      "sigFigs": 3
+    },
+    "distractors": [
+      {
+        "expr": "ImA * R",
+        "misconception": "M-PREFIX-MILLI"
+      },
+      {
+        "expr": "I * RK",
+        "misconception": "M-PREFIX-KILO"
+      },
+      {
+        "expr": "R / I",
+        "misconception": "M-OHM-INVERTED"
+      }
+    ],
+    "workshop": {
+      "diagramChoices": [
+        "single-resistor",
+        "series-three-resistors",
+        "open-circuit"
+      ],
+      "correctDiagram": "single-resistor",
+      "lawChoices": [
+        "V = I\\,R",
+        "I = \\frac{V}{R}",
+        "V = \\frac{I}{R}",
+        "W = V\\,Q"
+      ],
+      "correctLaw": "V = I\\,R",
+      "inventory": [
+        {
+          "symbol": "R",
+          "var": "RK",
+          "unit": "kΩ"
+        },
+        {
+          "symbol": "I",
+          "var": "ImA",
+          "unit": "mA"
+        }
+      ],
+      "unknown": "V",
+      "hiddenGiven": "كيلو = ×1000 ومللي = ÷1000. لو حوّلت الاتنين صح، هتلاقي إنهم بيلغوا بعض!",
+      "sanityCheck": "جهد مقاومة في دائرة عادية لازم يكون بين كسر فولت وعشرات الفولتات",
+      "sanityExpr": "x > 0.1 and x < 100"
+    },
+    "hints": [
+      "المطلوب جهد، والمعطى تيار ومقاومة: $V = I\\,R$.",
+      "حوّل: {RK} كيلو أوم = {R} أوم، و{ImA} مللي أمبير = {I} أمبير.",
+      "اضرب {I} × {R}. كام فولت؟"
+    ],
+    "solutionSteps": {
+      "draw": "مقاومة كبيرة (كيلو أوم) بيعدّي فيها تيار صغير (مللي أمبير)",
+      "classify": "الفصل 1: قانون أوم $V = I\\,R$",
+      "inventory": "$R = @RK\\,k\\Omega = @R\\,\\Omega$ · $I = @ImA\\,mA = @I\\,A$ · المطلوب: $V$",
+      "compute": "$V = @I \\times @R = @answer\\,V$",
+      "check": "كيلو × مللي = 1، فالناتج = {RK} × {ImA} على طول. حيلة حلوة!"
+    }
+  }
+]

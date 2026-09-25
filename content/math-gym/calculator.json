@@ -1,0 +1,154 @@
+{
+  "id": "gym.calculator",
+  "status": "draft",
+  "title": "الآلة الحاسبة",
+  "subtitle": "زر EXP و×10ˣ",
+  "intro": [
+    "عشان تكتب $6.6\\times10^{-34}$ في الحاسبة: اكتب 6.6 ثم زر **EXP** (أو ×10ˣ) ثم **(−)** ثم 34.",
+    "ماتكتبش \"× 10 ^\" بإيدك: ده بيعمل أخطاء في القسمة.",
+    "في القسمة على رقم مكتوب بالأس: حطه بين قوسين أو استخدم EXP."
+  ],
+  "templates": [
+    {
+      "id": "gym.calc.divide",
+      "chapter": 0,
+      "lesson": "gym",
+      "status": "draft",
+      "title": "قسمة بأسس",
+      "marks": 1,
+      "cognitiveLevel": "easy",
+      "targetSeconds": 90,
+      "stem": "احسب بالآلة الحاسبة: $\\frac{@a \\times 10^{@p}}{@b \\times 10^{@q}}$",
+      "variables": {
+        "a": {
+          "values": [
+            3.2,
+            4.8,
+            6.4,
+            8
+          ]
+        },
+        "b": {
+          "values": [
+            1.6,
+            2,
+            4
+          ]
+        },
+        "p": {
+          "values": [
+            -3,
+            -2,
+            2,
+            3,
+            -6
+          ]
+        },
+        "q": {
+          "values": [
+            -19,
+            -6,
+            -3,
+            2
+          ]
+        }
+      },
+      "derived": {
+        "ab": "a / b",
+        "pq": "p - q"
+      },
+      "constraints": [],
+      "answer": {
+        "expr": "a / b * 10^(p - q)",
+        "unit": "1",
+        "sigFigs": 3
+      },
+      "distractors": [
+        {
+          "expr": "a / b * 10^(p + q)",
+          "misconception": "M-POWER-OF-TEN"
+        },
+        {
+          "expr": "a * b * 10^(p - q)",
+          "misconception": "M-FORMULA-INVERTED"
+        },
+        {
+          "expr": "b / a * 10^(q - p)",
+          "misconception": "M-FORMULA-INVERTED"
+        }
+      ],
+      "hints": [
+        "اكتب البسط بزر EXP: {a} EXP {p}.",
+        "المقام كمان بـ EXP: {b} EXP {q}. لو كتبته بإيدك \"÷ {b} × 10^\"، الحاسبة هتضرب مش تقسم!",
+        "في القسمة الأسس بتتطرح: {p} − ({q}) = {pq}. والأرقام: {a} ÷ {b} = {ab}."
+      ],
+      "solutionSteps": {
+        "draw": "",
+        "classify": "",
+        "inventory": "",
+        "compute": "$= @ab \\times 10^{@pq}$",
+        "check": "طرحنا الأسس في القسمة"
+      }
+    },
+    {
+      "id": "gym.calc.planck",
+      "chapter": 0,
+      "lesson": "gym",
+      "status": "draft",
+      "title": "حسبة من الفيزياء الحديثة",
+      "marks": 1,
+      "cognitiveLevel": "easy",
+      "targetSeconds": 120,
+      "stem": "احسب: $\\frac{6.6 \\times 10^{-34} \\times 3 \\times 10^{8}}{@w \\times 10^{-7}}$ (دي حسبة طاقة فوتون هتقابلك في الفصل الخامس)",
+      "variables": {
+        "w": {
+          "values": [
+            2,
+            2.5,
+            3,
+            3.5,
+            4,
+            4.5,
+            5,
+            5.5,
+            6,
+            6.5,
+            7
+          ]
+        }
+      },
+      "constraints": [],
+      "answer": {
+        "expr": "6.6e-34 * 3e8 / (w * 1e-7)",
+        "unit": "1",
+        "sigFigs": 3
+      },
+      "distractors": [
+        {
+          "expr": "6.6e-34 * 3e8 / w * 1e-7",
+          "misconception": "M-POWER-OF-TEN"
+        },
+        {
+          "expr": "6.6e-34 * 3e8 * w * 1e-7",
+          "misconception": "M-FORMULA-INVERTED"
+        },
+        {
+          "expr": "6.6e-34 * 3e8 / (w * 1e-6)",
+          "misconception": "M-POWER-OF-TEN"
+        }
+      ],
+      "hints": [
+        "البسط: 6.6 EXP (−)34 × 3 EXP 8.",
+        "المقام: {w} EXP (−)7. اقسم البسط عليه كله (استخدم قوسين).",
+        "البسط = 1.98×10^-25. اقسمه على {w}×10^-7."
+      ],
+      "solutionSteps": {
+        "draw": "",
+        "classify": "",
+        "inventory": "",
+        "compute": "$= @answer$",
+        "check": "رقم صغير جداً (طاقة فوتون واحد بالجول)"
+      }
+    }
+  ]
+}

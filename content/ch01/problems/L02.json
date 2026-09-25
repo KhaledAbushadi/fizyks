@@ -1,0 +1,320 @@
+[
+  {
+    "id": "ch01.voltage-from-work",
+    "chapter": 1,
+    "lesson": "L02",
+    "status": "draft",
+    "title": "فرق الجهد من الشغل والشحنة",
+    "marks": 1,
+    "cognitiveLevel": "easy",
+    "targetSeconds": 120,
+    "stem": "بُذل شغل مقداره {W} جول لنقل شحنة مقدارها {Q} كولوم بين نقطتين في دائرة كهربية. احسب فرق الجهد بين النقطتين.",
+    "variables": {
+      "W": {
+        "values": [
+          6,
+          12,
+          18,
+          24,
+          30,
+          36,
+          45,
+          60,
+          90,
+          120,
+          180,
+          240
+        ]
+      },
+      "Q": {
+        "values": [
+          2,
+          3,
+          4,
+          5,
+          6,
+          10,
+          12,
+          15,
+          20
+        ]
+      }
+    },
+    "constraints": [
+      "W / Q >= 1",
+      "W / Q <= 60"
+    ],
+    "answer": {
+      "expr": "W / Q",
+      "unit": "V",
+      "sigFigs": 3
+    },
+    "distractors": [
+      {
+        "expr": "W * Q",
+        "misconception": "M-FORMULA-INVERTED"
+      },
+      {
+        "expr": "Q / W",
+        "misconception": "M-FORMULA-INVERTED"
+      }
+    ],
+    "workshop": {
+      "diagramChoices": [
+        "energy-lift",
+        "charge-flow",
+        "open-circuit"
+      ],
+      "correctDiagram": "energy-lift",
+      "lawChoices": [
+        "V = \\frac{W}{Q}",
+        "V = W \\times Q",
+        "I = \\frac{Q}{t}",
+        "V = I\\,R"
+      ],
+      "correctLaw": "V = \\frac{W}{Q}",
+      "inventory": [
+        {
+          "symbol": "W",
+          "var": "W",
+          "unit": "J"
+        },
+        {
+          "symbol": "Q",
+          "var": "Q",
+          "unit": "C"
+        }
+      ],
+      "unknown": "V",
+      "hiddenGiven": "فرق الجهد = شغل لكل كولوم واحد",
+      "sanityCheck": "الفولت = جول لكل كولوم: لو الشغل أكبر من الشحنة، الجهد لازم يطلع أكبر من 1",
+      "sanityExpr": "(W > Q) == (x > 1)"
+    },
+    "hints": [
+      "فرق الجهد هو الشغل اللازم لنقل كولوم واحد. يعني شغل ÷ شحنة.",
+      "القانون $V = \\frac{W}{Q}$. الفولت = جول ÷ كولوم.",
+      "اقسم {W} على {Q}. كام فولت؟"
+    ],
+    "solutionSteps": {
+      "draw": "نقطتين في دائرة، والشحنات بتتنقل بينهم وبيتبذل عليها شغل",
+      "classify": "الفصل 1: تعريف فرق الجهد $V = \\frac{W}{Q}$",
+      "inventory": "$W = @W\\,J$ · $Q = @Q\\,C$ · المطلوب: $V$",
+      "compute": "$V = \\frac{@W}{@Q} = @answer\\,V$",
+      "check": "جول ÷ كولوم = فولت، ورقم في حدود البطاريات العادية"
+    }
+  },
+  {
+    "id": "ch01.work-from-voltage",
+    "chapter": 1,
+    "lesson": "L02",
+    "status": "draft",
+    "title": "الشغل من الجهد والتيار والزمن",
+    "marks": 1,
+    "cognitiveLevel": "medium",
+    "targetSeconds": 200,
+    "stem": "بطارية فرق الجهد بين طرفيها {V} فولت، تدفع تياراً شدته {I} أمبير في دائرة لمدة {tmin} دقيقة. احسب الشغل المبذول لنقل الشحنات.",
+    "variables": {
+      "V": {
+        "values": [
+          1.5,
+          3,
+          4.5,
+          6,
+          9,
+          12
+        ]
+      },
+      "I": {
+        "values": [
+          0.2,
+          0.5,
+          1,
+          2
+        ]
+      },
+      "tmin": {
+        "values": [
+          1,
+          2,
+          5,
+          10
+        ]
+      }
+    },
+    "derived": {
+      "t": "tmin * 60",
+      "Q": "I * tmin * 60"
+    },
+    "constraints": [],
+    "answer": {
+      "expr": "V * I * t",
+      "unit": "J",
+      "sigFigs": 3
+    },
+    "distractors": [
+      {
+        "expr": "V * I * tmin",
+        "misconception": "M-TIME-MINUTES"
+      },
+      {
+        "expr": "V * I",
+        "misconception": "M-MISSED-VALUE"
+      },
+      {
+        "expr": "V / (I * t)",
+        "misconception": "M-FORMULA-INVERTED"
+      }
+    ],
+    "workshop": {
+      "diagramChoices": [
+        "single-resistor",
+        "charge-flow",
+        "open-circuit"
+      ],
+      "correctDiagram": "single-resistor",
+      "lawChoices": [
+        "W = V\\,Q",
+        "V = \\frac{W}{Q}",
+        "W = \\frac{V}{Q}",
+        "V = I\\,R"
+      ],
+      "correctLaw": "W = V\\,Q",
+      "inventory": [
+        {
+          "symbol": "V",
+          "var": "V",
+          "unit": "V"
+        },
+        {
+          "symbol": "I",
+          "var": "I",
+          "unit": "A"
+        },
+        {
+          "symbol": "t",
+          "var": "tmin",
+          "unit": "min"
+        }
+      ],
+      "unknown": "W",
+      "hiddenGiven": "الشحنة مش مكتوبة صريحة: $Q = I\\,t$، والزمن لازم بالثواني",
+      "sanityCheck": "الشغل بالجول لازم يطلع أكبر من الجهد × التيار، لأن الزمن أكتر من ثانية",
+      "sanityExpr": "x > V * I * 1.5"
+    },
+    "hints": [
+      "الشغل = فرق الجهد × الشحنة: $W = V\\,Q$. بس الشحنة مش مكتوبة!",
+      "الشحنة المخفية: $Q = I\\,t$. والزمن {tmin} دقيقة = {t} ثانية.",
+      "الشحنة = {I} × {t} = {Q} كولوم. اضربها في {V}. كام جول؟"
+    ],
+    "solutionSteps": {
+      "draw": "بطارية بتدفع تيار في دائرة مقفولة",
+      "classify": "الفصل 1: $W = V\\,Q$ مع $Q = I\\,t$",
+      "inventory": "$V = @V\\,V$ · $I = @I\\,A$ · $t = @tmin\\,min = @t\\,s$ · المطلوب: $W$",
+      "compute": "$Q = @I \\times @t = @Q\\,C$ ، $W = @V \\times @Q = @answer\\,J$",
+      "check": "جول = فولت × كولوم، والرقم كبير لأن الزمن طويل"
+    }
+  },
+  {
+    "id": "ch01.charge-from-work",
+    "chapter": 1,
+    "lesson": "L02",
+    "status": "draft",
+    "title": "الشحنة من الشغل والجهد",
+    "marks": 1,
+    "cognitiveLevel": "easy",
+    "targetSeconds": 120,
+    "stem": "لزم شغل مقداره {W} جول لنقل شحنة بين نقطتين فرق الجهد بينهما {V} فولت. احسب مقدار الشحنة المنقولة.",
+    "variables": {
+      "W": {
+        "values": [
+          3,
+          6,
+          9,
+          12,
+          18,
+          24,
+          36,
+          48,
+          60,
+          72,
+          90,
+          120
+        ]
+      },
+      "V": {
+        "values": [
+          1.5,
+          3,
+          4.5,
+          6,
+          9,
+          12,
+          24
+        ]
+      }
+    },
+    "constraints": [
+      "W / V >= 0.5",
+      "W / V <= 40",
+      "W != V"
+    ],
+    "answer": {
+      "expr": "W / V",
+      "unit": "C",
+      "sigFigs": 3
+    },
+    "distractors": [
+      {
+        "expr": "W * V",
+        "misconception": "M-FORMULA-INVERTED"
+      },
+      {
+        "expr": "V / W",
+        "misconception": "M-FORMULA-INVERTED"
+      }
+    ],
+    "workshop": {
+      "diagramChoices": [
+        "energy-lift",
+        "charge-flow",
+        "single-resistor"
+      ],
+      "correctDiagram": "energy-lift",
+      "lawChoices": [
+        "Q = \\frac{W}{V}",
+        "Q = W \\times V",
+        "I = \\frac{Q}{t}",
+        "R = \\frac{V}{I}"
+      ],
+      "correctLaw": "Q = \\frac{W}{V}",
+      "inventory": [
+        {
+          "symbol": "W",
+          "var": "W",
+          "unit": "J"
+        },
+        {
+          "symbol": "V",
+          "var": "V",
+          "unit": "V"
+        }
+      ],
+      "unknown": "Q",
+      "hiddenGiven": "من $V = \\frac{W}{Q}$ نسحب Q: $Q = \\frac{W}{V}$",
+      "sanityCheck": "لو الشغل أكبر من الجهد، الشحنة لازم تطلع أكبر من 1 كولوم",
+      "sanityExpr": "(W > V) == (x > 1)"
+    },
+    "hints": [
+      "ابدأ من تعريف فرق الجهد $V = \\frac{W}{Q}$ واسحب منه Q.",
+      "$Q = \\frac{W}{V}$: الشغل فوق والجهد تحت. الكولوم = جول ÷ فولت.",
+      "اقسم {W} على {V}. كام كولوم؟"
+    ],
+    "solutionSteps": {
+      "draw": "نقطتين بينهم فرق جهد، وشحنة بتتنقل بينهم",
+      "classify": "الفصل 1: $V = \\frac{W}{Q}$ ومنه $Q = \\frac{W}{V}$",
+      "inventory": "$W = @W\\,J$ · $V = @V\\,V$ · المطلوب: $Q$",
+      "compute": "$Q = \\frac{@W}{@V} = @answer\\,C$",
+      "check": "جول ÷ فولت = كولوم، والرقم معقول"
+    }
+  }
+]

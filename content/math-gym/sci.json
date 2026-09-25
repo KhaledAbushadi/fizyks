@@ -1,0 +1,234 @@
+{
+  "id": "gym.sci",
+  "status": "draft",
+  "title": "الأسس العشرية",
+  "subtitle": "الأرقام الصغيرة جداً والكبيرة جداً",
+  "intro": [
+    "الصيغة العلمية: رقم بين 1 و10، مضروب في 10 أس حاجة.",
+    "رقم صغير (0.00045)؟ حرّك العلامة لليمين لحد ما يبقى 4.5، وعدّ الخانات: 4 خانات = $10^{-4}$.",
+    "رقم كبير (36000)؟ حرّكها لليسار: 4 خانات = $10^{4}$.",
+    "في لوحة الأرقام، زر ×10ⁿ بيكتبلك الأس."
+  ],
+  "templates": [
+    {
+      "id": "gym.sci.small",
+      "chapter": 0,
+      "lesson": "gym",
+      "status": "draft",
+      "title": "اكتب الرقم الصغير بالصيغة العلمية",
+      "marks": 1,
+      "cognitiveLevel": "easy",
+      "targetSeconds": 60,
+      "stem": "اكتب الرقم {x:plain} بالصيغة العلمية.",
+      "variables": {
+        "m": {
+          "values": [
+            1.5,
+            2.5,
+            3.2,
+            4.5,
+            6.4,
+            7.2,
+            8.1,
+            9.6
+          ]
+        },
+        "p": {
+          "values": [
+            2,
+            3,
+            4,
+            5,
+            6
+          ]
+        }
+      },
+      "derived": {
+        "x": "m * 10^(-p)"
+      },
+      "constraints": [],
+      "answer": {
+        "expr": "m * 10^(-p)",
+        "unit": "1",
+        "sigFigs": 2
+      },
+      "distractors": [
+        {
+          "expr": "m * 10^(-p + 1)",
+          "misconception": "M-POWER-OF-TEN"
+        },
+        {
+          "expr": "m * 10^(p)",
+          "misconception": "M-POWER-OF-TEN"
+        },
+        {
+          "expr": "m * 10^(-p - 1)",
+          "misconception": "M-POWER-OF-TEN"
+        }
+      ],
+      "hints": [
+        "الصيغة العلمية = رقم من 1 لـ 10 × 10 أس.",
+        "عدّ الخانات اللي العلامة العشرية هتتحركها لحد ما يبقى الرقم {m}. الحركة لليمين = أس سالب.",
+        "الأس = سالب {p}. يبقى {m} ×10^-{p}."
+      ],
+      "solutionSteps": {
+        "draw": "",
+        "classify": "",
+        "inventory": "$x = @x:plain$",
+        "compute": "$@x:plain = @m \\times 10^{-@p}$",
+        "check": "رقم أصغر من 1، فالأس سالب. منطقي"
+      }
+    },
+    {
+      "id": "gym.sci.big",
+      "chapter": 0,
+      "lesson": "gym",
+      "status": "draft",
+      "title": "اكتب الرقم الكبير بالصيغة العلمية",
+      "marks": 1,
+      "cognitiveLevel": "easy",
+      "targetSeconds": 60,
+      "stem": "اكتب الرقم {x:plain} بالصيغة العلمية.",
+      "variables": {
+        "m": {
+          "values": [
+            1.2,
+            2.5,
+            3.6,
+            4.8,
+            6.25,
+            7.5
+          ]
+        },
+        "p": {
+          "values": [
+            3,
+            4,
+            5,
+            6
+          ]
+        }
+      },
+      "derived": {
+        "x": "m * 10^p"
+      },
+      "constraints": [],
+      "answer": {
+        "expr": "m * 10^p",
+        "unit": "1",
+        "sigFigs": 3
+      },
+      "distractors": [
+        {
+          "expr": "m * 10^(p - 1)",
+          "misconception": "M-POWER-OF-TEN"
+        },
+        {
+          "expr": "m * 10^(-p)",
+          "misconception": "M-POWER-OF-TEN"
+        },
+        {
+          "expr": "m * 10^(p + 1)",
+          "misconception": "M-POWER-OF-TEN"
+        }
+      ],
+      "hints": [
+        "رقم كبير: العلامة العشرية هتتحرك لليسار.",
+        "عدّ الخانات لحد ما يفضل رقم واحد قبل العلامة: {m}.",
+        "{p} خانات، يبقى {m} ×10^{p}."
+      ],
+      "solutionSteps": {
+        "draw": "",
+        "classify": "",
+        "inventory": "$x = @x:plain$",
+        "compute": "$@x:plain = @m \\times 10^{@p}$",
+        "check": "رقم كبير، الأس موجب"
+      }
+    },
+    {
+      "id": "gym.sci.multiply",
+      "chapter": 0,
+      "lesson": "gym",
+      "status": "draft",
+      "title": "ضرب الأسس",
+      "marks": 1,
+      "cognitiveLevel": "easy",
+      "targetSeconds": 60,
+      "stem": "احسب: $(@a \\times 10^{@p}) \\times (@b \\times 10^{@q})$",
+      "variables": {
+        "a": {
+          "values": [
+            2,
+            3,
+            4,
+            1.5,
+            2.5
+          ]
+        },
+        "b": {
+          "values": [
+            2,
+            3,
+            1.6,
+            4
+          ]
+        },
+        "p": {
+          "values": [
+            -19,
+            -8,
+            -6,
+            -3,
+            3,
+            8
+          ]
+        },
+        "q": {
+          "values": [
+            -3,
+            -2,
+            2,
+            3,
+            6
+          ]
+        }
+      },
+      "derived": {
+        "ab": "a * b",
+        "pq": "p + q"
+      },
+      "constraints": [],
+      "answer": {
+        "expr": "a * b * 10^(p + q)",
+        "unit": "1",
+        "sigFigs": 3
+      },
+      "distractors": [
+        {
+          "expr": "a * b * 10^(p * q)",
+          "misconception": "M-POWER-OF-TEN"
+        },
+        {
+          "expr": "(a + b) * 10^(p + q)",
+          "misconception": "M-FORMULA-INVERTED"
+        },
+        {
+          "expr": "a * b * 10^(p - q)",
+          "misconception": "M-POWER-OF-TEN"
+        }
+      ],
+      "hints": [
+        "وانت بتضرب: الأرقام في بعض، والأسس **بتتجمع**.",
+        "{a} × {b} = {ab}، والأس = ({p}) + ({q}) = {pq}.",
+        "الناتج {ab} ×10^{pq}."
+      ],
+      "solutionSteps": {
+        "draw": "",
+        "classify": "",
+        "inventory": "",
+        "compute": "$= @ab \\times 10^{@pq}$",
+        "check": "جمعنا الأسس، مش ضربناها"
+      }
+    }
+  ]
+}

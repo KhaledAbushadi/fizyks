@@ -1,0 +1,478 @@
+[
+  {
+    "id": "ch01.parallel-two",
+    "chapter": 1,
+    "lesson": "L06",
+    "status": "draft",
+    "title": "المكافئة لمقاومتين على التوازي",
+    "marks": 1,
+    "cognitiveLevel": "easy",
+    "targetSeconds": 120,
+    "stem": "مقاومتان قيمتهما {R1} أوم و{R2} أوم وُصّلتا معاً على التوازي. احسب المقاومة المكافئة.",
+    "variables": {
+      "R1": {
+        "values": [
+          2,
+          3,
+          4,
+          6,
+          10,
+          12,
+          15,
+          20,
+          30,
+          60
+        ]
+      },
+      "R2": {
+        "values": [
+          2,
+          3,
+          4,
+          6,
+          10,
+          12,
+          15,
+          20,
+          30,
+          60
+        ]
+      }
+    },
+    "derived": {
+      "P": "R1 * R2",
+      "S": "R1 + R2",
+      "Rmin": "min(R1, R2)"
+    },
+    "constraints": [],
+    "answer": {
+      "expr": "R1 * R2 / (R1 + R2)",
+      "unit": "Ω",
+      "sigFigs": 3
+    },
+    "distractors": [
+      {
+        "expr": "R1 + R2",
+        "misconception": "M-SERIES-PARALLEL-SWAP"
+      },
+      {
+        "expr": "(R1 + R2) / 2",
+        "misconception": "M-AVERAGE-RESISTANCE"
+      },
+      {
+        "expr": "1/R1 + 1/R2",
+        "misconception": "M-FORGOT-INVERT"
+      }
+    ],
+    "workshop": {
+      "diagramChoices": [
+        "parallel-two-resistors",
+        "series-two-resistors",
+        "mixed-parallel-series"
+      ],
+      "correctDiagram": "parallel-two-resistors",
+      "lawChoices": [
+        "R' = \\frac{R_1 R_2}{R_1 + R_2}",
+        "R' = R_1 + R_2",
+        "R' = \\frac{R_1 + R_2}{2}",
+        "R' = \\frac{1}{R_1} + \\frac{1}{R_2}"
+      ],
+      "correctLaw": "R' = \\frac{R_1 R_2}{R_1 + R_2}",
+      "inventory": [
+        {
+          "symbol": "R_1",
+          "var": "R1",
+          "unit": "Ω"
+        },
+        {
+          "symbol": "R_2",
+          "var": "R2",
+          "unit": "Ω"
+        }
+      ],
+      "unknown": "R'",
+      "hiddenGiven": "لمقاومتين بس على التوازي: حاصل الضرب ÷ المجموع",
+      "sanityCheck": "على التوازي المكافئة لازم أقل من أصغر مقاومة",
+      "sanityExpr": "x < min(R1, R2)"
+    },
+    "hints": [
+      "المقاومتين طرفهم على نفس النقطتين: ده توازي. المكافئة بتصغر.",
+      "لمقاومتين: $R' = \\frac{R_1 R_2}{R_1 + R_2}$ (الضرب ÷ الجمع).",
+      "{R1} × {R2} = {P}، و{R1} + {R2} = {S}. اقسم {P} على {S}."
+    ],
+    "solutionSteps": {
+      "draw": "مقاومتين كل واحدة في فرع، والفرعين بين نفس النقطتين",
+      "classify": "الفصل 1: التوازي $R' = \\frac{R_1 R_2}{R_1 + R_2}$",
+      "inventory": "$R_1 = @R1\\,\\Omega$ · $R_2 = @R2\\,\\Omega$ · المطلوب: $R'$",
+      "compute": "$R' = \\frac{@R1 \\times @R2}{@R1 + @R2} = \\frac{@P}{@S} = @answer\\,\\Omega$",
+      "check": "أقل من أصغر مقاومة ({Rmin}): زي ما لازم يحصل في التوازي"
+    }
+  },
+  {
+    "id": "ch01.parallel-equal",
+    "chapter": 1,
+    "lesson": "L06",
+    "status": "draft",
+    "title": "لمبات متماثلة على التوازي",
+    "marks": 1,
+    "cognitiveLevel": "medium",
+    "targetSeconds": 150,
+    "stem": "{N} لمبات متماثلة، مقاومة كل منها {R} أوم، وُصّلت على التوازي ببطارية قوتها الدافعة {VB} فولت ومقاومتها الداخلية مهملة. احسب شدة التيار المار في البطارية.",
+    "variables": {
+      "N": {
+        "values": [
+          2,
+          3,
+          4,
+          5
+        ]
+      },
+      "R": {
+        "values": [
+          6,
+          8,
+          10,
+          12,
+          20,
+          24,
+          30,
+          60
+        ]
+      },
+      "VB": {
+        "values": [
+          6,
+          12,
+          24
+        ]
+      }
+    },
+    "derived": {
+      "Rp": "R / N",
+      "Ione": "VB / R"
+    },
+    "constraints": [
+      "VB * N / R <= 12"
+    ],
+    "answer": {
+      "expr": "VB / (R / N)",
+      "unit": "A",
+      "sigFigs": 3
+    },
+    "distractors": [
+      {
+        "expr": "VB / (N * R)",
+        "misconception": "M-SERIES-PARALLEL-SWAP"
+      },
+      {
+        "expr": "VB / R",
+        "misconception": "M-ONE-BRANCH"
+      },
+      {
+        "expr": "VB * R / N",
+        "misconception": "M-OHM-INVERTED"
+      }
+    ],
+    "workshop": {
+      "diagramChoices": [
+        "parallel-three-resistors",
+        "series-three-resistors",
+        "single-resistor"
+      ],
+      "correctDiagram": "parallel-three-resistors",
+      "lawChoices": [
+        "R' = \\frac{R}{N}",
+        "R' = N\\,R",
+        "R' = R",
+        "R' = \\frac{N}{R}"
+      ],
+      "correctLaw": "R' = \\frac{R}{N}",
+      "inventory": [
+        {
+          "symbol": "N",
+          "var": "N",
+          "unit": "1"
+        },
+        {
+          "symbol": "R",
+          "var": "R",
+          "unit": "Ω"
+        },
+        {
+          "symbol": "V_B",
+          "var": "VB",
+          "unit": "V"
+        }
+      ],
+      "unknown": "I",
+      "hiddenGiven": "لمبات متماثلة على التوازي: $R' = \\frac{R}{N}$، والجهد على كل لمبة = جهد البطارية",
+      "sanityCheck": "تيار البطارية لازم أكبر من تيار لمبة واحدة ({Ione} أمبير)",
+      "sanityExpr": "x > VB / R"
+    },
+    "hints": [
+      "لمبات متماثلة على التوازي: المكافئة = مقاومة الواحدة ÷ عددها.",
+      "$R' = \\frac{R}{N}$ = {R} ÷ {N} = {Rp} أوم. وبعدين قانون أوم.",
+      "اقسم {VB} على {Rp}. ده تيار البطارية."
+    ],
+    "solutionSteps": {
+      "draw": "{N} لمبات، كل واحدة في فرع لوحدها بين قطبي البطارية",
+      "classify": "الفصل 1: التوازي لمقاومات متساوية $R' = \\frac{R}{N}$ + قانون أوم",
+      "inventory": "$N = @N$ · $R = @R\\,\\Omega$ · $V_B = @VB\\,V$ · المطلوب: $I$",
+      "compute": "$R' = \\frac{@R}{@N} = @Rp\\,\\Omega$ ، $I = \\frac{@VB}{@Rp} = @answer\\,A$",
+      "check": "= {N} × تيار اللمبة الواحدة: كل لمبة بتسحب تيارها، والبطارية بتدّي الكل"
+    }
+  },
+  {
+    "id": "ch01.parallel-total-current",
+    "chapter": 1,
+    "lesson": "L06",
+    "status": "draft",
+    "title": "التيار الكلي في التوازي",
+    "marks": 1,
+    "cognitiveLevel": "medium",
+    "targetSeconds": 150,
+    "stem": "مقاومتان {R1} أوم و{R2} أوم وُصّلتا على التوازي ببطارية قوتها الدافعة {VB} فولت ومقاومتها الداخلية مهملة. احسب شدة التيار الكلي المار في البطارية.",
+    "variables": {
+      "R1": {
+        "values": [
+          3,
+          4,
+          5,
+          6,
+          8,
+          10,
+          12,
+          15,
+          20,
+          30
+        ]
+      },
+      "R2": {
+        "values": [
+          3,
+          4,
+          5,
+          6,
+          8,
+          10,
+          12,
+          15,
+          20,
+          30
+        ]
+      },
+      "VB": {
+        "values": [
+          6,
+          9,
+          12,
+          24
+        ]
+      }
+    },
+    "derived": {
+      "I1": "VB / R1",
+      "I2": "VB / R2"
+    },
+    "constraints": [
+      "VB / R1 + VB / R2 <= 12"
+    ],
+    "answer": {
+      "expr": "VB / R1 + VB / R2",
+      "unit": "A",
+      "sigFigs": 3
+    },
+    "distractors": [
+      {
+        "expr": "VB / (R1 + R2)",
+        "misconception": "M-SERIES-PARALLEL-SWAP"
+      },
+      {
+        "expr": "VB / R1",
+        "misconception": "M-ONE-BRANCH"
+      },
+      {
+        "expr": "VB / ((R1 + R2) / 2)",
+        "misconception": "M-AVERAGE-RESISTANCE"
+      }
+    ],
+    "workshop": {
+      "diagramChoices": [
+        "parallel-two-resistors",
+        "series-two-resistors",
+        "kirchhoff-junction"
+      ],
+      "correctDiagram": "parallel-two-resistors",
+      "lawChoices": [
+        "I = I_1 + I_2",
+        "I = I_1 = I_2",
+        "I = \\frac{V_B}{R_1 + R_2}",
+        "I = I_1 - I_2"
+      ],
+      "correctLaw": "I = I_1 + I_2",
+      "inventory": [
+        {
+          "symbol": "R_1",
+          "var": "R1",
+          "unit": "Ω"
+        },
+        {
+          "symbol": "R_2",
+          "var": "R2",
+          "unit": "Ω"
+        },
+        {
+          "symbol": "V_B",
+          "var": "VB",
+          "unit": "V"
+        }
+      ],
+      "unknown": "I",
+      "hiddenGiven": "على التوازي كل مقاومة عليها جهد البطارية كامل: {VB} فولت",
+      "sanityCheck": "التيار الكلي لازم أكبر من تيار أي فرع لوحده",
+      "sanityExpr": "x > max(VB/R1, VB/R2) * 1.001"
+    },
+    "hints": [
+      "التيار بيتفرّع: جزء في كل مقاومة. والتيار الكلي = مجموع الفروع.",
+      "الجهد على كل فرع = {VB} فولت. يبقى $I_1 = \\frac{V_B}{R_1}$ و$I_2 = \\frac{V_B}{R_2}$.",
+      "$I_1$ = {I1} أمبير، و$I_2$ = {I2} أمبير. اجمعهم."
+    ],
+    "solutionSteps": {
+      "draw": "بطارية ومقاومتين كل واحدة في فرع",
+      "classify": "الفصل 1: التوازي (الجهد واحد، التيارات بتتجمع)",
+      "inventory": "$R_1 = @R1\\,\\Omega$ · $R_2 = @R2\\,\\Omega$ · $V_B = @VB\\,V$ · المطلوب: $I$",
+      "compute": "$I_1 = \\frac{@VB}{@R1} = @I1$ ، $I_2 = \\frac{@VB}{@R2} = @I2$ ، $I = @answer\\,A$",
+      "check": "الفرع اللي مقاومته أصغر بياخد تيار أكبر، والمجموع أكبر من أي فرع"
+    }
+  },
+  {
+    "id": "ch01.mixed-circuit",
+    "chapter": 1,
+    "lesson": "L06",
+    "status": "draft",
+    "title": "توازي مع توالي (دائرة مركبة)",
+    "marks": 1,
+    "cognitiveLevel": "hard",
+    "targetSeconds": 240,
+    "stem": "مقاومتان {Ra} أوم و{Rb} أوم وُصّلتا على التوازي، ثم وُصّلت المجموعة على التوالي مع مقاومة ثالثة {Rc} أوم وبطارية قوتها الدافعة {VB} فولت ومقاومتها الداخلية مهملة. احسب شدة التيار الكلي في الدائرة.",
+    "variables": {
+      "Ra": {
+        "values": [
+          2,
+          3,
+          4,
+          6,
+          12
+        ]
+      },
+      "Rb": {
+        "values": [
+          3,
+          4,
+          6,
+          12
+        ]
+      },
+      "Rc": {
+        "values": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          7,
+          8,
+          10
+        ]
+      },
+      "VB": {
+        "values": [
+          6,
+          9,
+          12,
+          18,
+          24
+        ]
+      }
+    },
+    "derived": {
+      "Rp": "Ra * Rb / (Ra + Rb)",
+      "Rt": "Ra * Rb / (Ra + Rb) + Rc"
+    },
+    "constraints": [
+      "Ra != Rb"
+    ],
+    "answer": {
+      "expr": "VB / (Ra * Rb / (Ra + Rb) + Rc)",
+      "unit": "A",
+      "sigFigs": 3
+    },
+    "distractors": [
+      {
+        "expr": "VB / (Ra + Rb + Rc)",
+        "misconception": "M-SERIES-PARALLEL-SWAP"
+      },
+      {
+        "expr": "VB / Rc",
+        "misconception": "M-MISSED-VALUE"
+      },
+      {
+        "expr": "VB / ((Ra + Rb) / 2 + Rc)",
+        "misconception": "M-AVERAGE-RESISTANCE"
+      }
+    ],
+    "workshop": {
+      "diagramChoices": [
+        "mixed-parallel-series",
+        "series-three-resistors",
+        "parallel-three-resistors"
+      ],
+      "correctDiagram": "mixed-parallel-series",
+      "lawChoices": [
+        "R = \\frac{R_a R_b}{R_a + R_b} + R_c",
+        "R = R_a + R_b + R_c",
+        "\\frac{1}{R} = \\frac{1}{R_a} + \\frac{1}{R_b} + \\frac{1}{R_c}",
+        "R = \\frac{R_a + R_b}{2} + R_c"
+      ],
+      "correctLaw": "R = \\frac{R_a R_b}{R_a + R_b} + R_c",
+      "inventory": [
+        {
+          "symbol": "R_a",
+          "var": "Ra",
+          "unit": "Ω"
+        },
+        {
+          "symbol": "R_b",
+          "var": "Rb",
+          "unit": "Ω"
+        },
+        {
+          "symbol": "R_c",
+          "var": "Rc",
+          "unit": "Ω"
+        },
+        {
+          "symbol": "V_B",
+          "var": "VB",
+          "unit": "V"
+        }
+      ],
+      "unknown": "I",
+      "hiddenGiven": "حل من جوه لبره: التوازي الأول يبقى مقاومة واحدة، وبعدين تتجمع مع Rc على التوالي",
+      "sanityCheck": "التيار لازم أقل من VB ÷ Rc (لأن فيه مقاومة زيادة غير Rc)",
+      "sanityExpr": "x < VB / Rc"
+    },
+    "hints": [
+      "الدائرة مركبة: فكّها حتة حتة. ابدأ بالمقاومتين اللي على التوازي.",
+      "مكافئة التوازي = {Ra} × {Rb} ÷ ({Ra} + {Rb}) = {Rp} أوم. دي على التوالي مع {Rc}.",
+      "المقاومة الكلية = {Rp} + {Rc} = {Rt} أوم. اقسم {VB} عليها."
+    ],
+    "solutionSteps": {
+      "draw": "Ra و Rb على التوازي، والمجموعة ورا Rc والبطارية",
+      "classify": "الفصل 1: توازي ثم توالي ثم قانون أوم",
+      "inventory": "$R_a = @Ra$ · $R_b = @Rb$ · $R_c = @Rc\\,\\Omega$ · $V_B = @VB\\,V$ · المطلوب: $I$",
+      "compute": "$R_p = \\frac{@Ra \\times @Rb}{@Ra + @Rb} = @Rp$ ، $R = @Rp + @Rc = @Rt\\,\\Omega$ ، $I = \\frac{@VB}{@Rt} = @answer\\,A$",
+      "check": "أقل من {VB} ÷ {Rc}، منطقي"
+    }
+  }
+]

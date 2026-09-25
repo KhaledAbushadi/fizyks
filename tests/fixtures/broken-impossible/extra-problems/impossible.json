@@ -1,0 +1,100 @@
+{
+  "id": "fixture.impossible",
+  "chapter": 1,
+  "lesson": "L07",
+  "status": "draft",
+  "title": "التيار في الدائرة المغلقة",
+  "marks": 1,
+  "cognitiveLevel": "medium",
+  "targetSeconds": 180,
+  "stem": "بطارية قوتها الدافعة {emf} فولت ومقاومتها الداخلية {r} أوم، وُصّلت بمقاومة خارجية {R} أوم. احسب شدة التيار المار في الدائرة.",
+  "variables": {
+    "emf": {
+      "values": [
+        6,
+        9,
+        12,
+        24
+      ]
+    },
+    "r": {
+      "min": 0.5,
+      "max": 2,
+      "step": 0.5
+    },
+    "R": {
+      "min": 2,
+      "max": 20,
+      "step": 0.5
+    }
+  },
+  "constraints": [
+    "emf / (R + r) > 100"
+  ],
+  "answer": {
+    "expr": "emf / (R + r)",
+    "unit": "A",
+    "sigFigs": 3
+  },
+  "distractors": [
+    {
+      "expr": "emf / R",
+      "misconception": "M-IGNORE-INTERNAL-R"
+    },
+    {
+      "expr": "emf / r",
+      "misconception": "M-ONLY-INTERNAL-R"
+    },
+    {
+      "expr": "emf * (R + r)",
+      "misconception": "M-OHM-INVERTED"
+    }
+  ],
+  "workshop": {
+    "diagramChoices": [
+      "closed-circuit-internal-r",
+      "series-two-resistors",
+      "open-circuit"
+    ],
+    "correctDiagram": "closed-circuit-internal-r",
+    "lawChoices": [
+      "I = \\frac{V}{R}",
+      "I = \\frac{V_B}{R + r}",
+      "V = V_B - I\\,r"
+    ],
+    "correctLaw": "I = \\frac{V_B}{R + r}",
+    "inventory": [
+      {
+        "symbol": "V_B",
+        "var": "emf",
+        "unit": "V"
+      },
+      {
+        "symbol": "r",
+        "var": "r",
+        "unit": "Ω"
+      },
+      {
+        "symbol": "R",
+        "var": "R",
+        "unit": "Ω"
+      }
+    ],
+    "unknown": "I",
+    "hiddenGiven": "المقاومة الداخلية بتتجمع مع الخارجية على التوالي",
+    "sanityCheck": "التيار لازم يطلع أقل من القوة الدافعة ÷ R لوحدها",
+    "sanityExpr": "x < emf / R"
+  },
+  "hints": [
+    "المسألة فيها بطارية ليها مقاومة داخلية. ده قانون أوم للدائرة المغلقة.",
+    "المقاومة الداخلية r بتتجمع مع R. المقاومة الكلية = R + r.",
+    "احسب الأول المقاومة الكلية: {R} + {r} = ؟ وبعدين اقسم عليها {emf}."
+  ],
+  "solutionSteps": {
+    "draw": "دائرة مغلقة: بطارية ($V_B$ و r) موصّلة بمقاومة R",
+    "classify": "الفصل 1: قانون أوم للدائرة المغلقة $I = \\frac{V_B}{R + r}$",
+    "inventory": "$V_B = @emf\\,V$ · $r = @r\\,\\Omega$ · $R = @R\\,\\Omega$ · المطلوب: $I$",
+    "compute": "$I = \\frac{@emf}{@R + @r} = @answer\\,A$",
+    "check": "{answer} A أقل من {emf} ÷ {R}، إذن منطقي"
+  }
+}

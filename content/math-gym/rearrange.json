@@ -1,0 +1,130 @@
+{
+  "id": "gym.rearrange",
+  "status": "draft",
+  "title": "نقل الحدود",
+  "subtitle": "اسحب المجهول لوحده",
+  "intro": [
+    "اللي بيضرب في ناحية، بينتقل للناحية التانية **يقسم**.",
+    "واللي بيقسم، بينتقل **يضرب**.",
+    "مثال: $V = I\\,R$ ⇐ عاوز R؟ الـ I بتضرب R، فتنتقل تقسم: $R = \\frac{V}{I}$."
+  ],
+  "rearrange": [
+    {
+      "id": "gym.rearrange.ohm-R",
+      "status": "draft",
+      "law": "V = I \\times R",
+      "target": "R",
+      "tiles": [
+        "V",
+        "I",
+        "\\div",
+        "\\times",
+        "R"
+      ],
+      "answer": [
+        "V",
+        "\\div",
+        "I"
+      ],
+      "hint": "الـ I بتضرب R، انقلها للناحية التانية تقسم."
+    },
+    {
+      "id": "gym.rearrange.ohm-I",
+      "status": "draft",
+      "law": "V = I \\times R",
+      "target": "I",
+      "tiles": [
+        "V",
+        "R",
+        "\\div",
+        "\\times",
+        "I"
+      ],
+      "answer": [
+        "V",
+        "\\div",
+        "R"
+      ],
+      "hint": "الـ R بتضرب I، انقلها تقسم."
+    },
+    {
+      "id": "gym.rearrange.charge",
+      "status": "draft",
+      "law": "I = Q \\div t",
+      "target": "Q",
+      "tiles": [
+        "I",
+        "t",
+        "\\times",
+        "\\div",
+        "Q"
+      ],
+      "answer": [
+        "I",
+        "\\times",
+        "t"
+      ],
+      "hint": "الـ t بتقسم Q، انقلها تضرب."
+    },
+    {
+      "id": "gym.rearrange.time",
+      "status": "draft",
+      "law": "I = Q \\div t",
+      "target": "t",
+      "tiles": [
+        "Q",
+        "I",
+        "\\div",
+        "\\times",
+        "t"
+      ],
+      "answer": [
+        "Q",
+        "\\div",
+        "I"
+      ],
+      "hint": "t تحت: اضرب الطرفين في t، وبعدين اقسم على I."
+    },
+    {
+      "id": "gym.rearrange.work",
+      "status": "draft",
+      "law": "V = W \\div Q",
+      "target": "W",
+      "tiles": [
+        "V",
+        "Q",
+        "\\times",
+        "\\div",
+        "W"
+      ],
+      "answer": [
+        "V",
+        "\\times",
+        "Q"
+      ],
+      "hint": "Q بتقسم W، انقلها تضرب."
+    },
+    {
+      "id": "gym.rearrange.length",
+      "status": "draft",
+      "law": "R = \\rho_e \\times \\ell \\div A",
+      "target": "\\ell",
+      "tiles": [
+        "R",
+        "A",
+        "\\rho_e",
+        "\\times",
+        "\\div",
+        "\\ell"
+      ],
+      "answer": [
+        "R",
+        "\\times",
+        "A",
+        "\\div",
+        "\\rho_e"
+      ],
+      "hint": "A بتقسم ← تنتقل تضرب. و$\\rho_e$ بتضرب ← تنتقل تقسم."
+    }
+  ]
+}
