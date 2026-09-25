@@ -9,6 +9,7 @@ import { recordAttempt } from '../../services/progress';
 import { updateSettings } from '../../services/settings';
 import { navigate } from '../../router';
 import { LogoMark } from '../../ui/Logo';
+import { Mascot } from '../../ui/Mascot';
 import { Page, TopBar } from '../../ui/bits';
 import { RichText } from '../../ui/RichText';
 import { Num } from '../../ui/Num';
@@ -20,8 +21,9 @@ export function Welcome() {
   return (
     <Page className="flex min-h-[100dvh] flex-col justify-center">
       <div className="fade-in text-center">
-        <div className="mx-auto w-fit">
-          <LogoMark size={84} />
+        <div className="mx-auto flex w-fit items-end gap-2">
+          <LogoMark size={72} />
+          <Mascot mood="wave" size={96} className="bob" />
         </div>
         <h1 className="mt-4 text-4xl font-bold">فُكّها</h1>
         <p className="mt-2 text-lg text-ink-2">الفيزيا مش صعبة. هي بس متعقّدة. وإحنا هنفكّها حتة حتة.</p>

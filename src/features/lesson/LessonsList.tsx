@@ -6,6 +6,8 @@ import { navigate } from '../../router';
 import { Empty, Page } from '../../ui/bits';
 import { IconCheck, IconLock } from '../../ui/Icons';
 
+const TONES = ['var(--amber)', 'var(--sky)', 'var(--pink)', 'var(--teal)', 'var(--violet)', 'var(--warm)', 'var(--good)', 'var(--hero-b)'];
+
 export function LessonsList({ data }: { data: AppData }) {
   const chapter = content.chapters[0];
   const lessons = data.visibleLessons;
@@ -19,7 +21,8 @@ export function LessonsList({ data }: { data: AppData }) {
       {lessons.length === 0 && <Empty title="الدروس تحت المراجعة">مدرس الفيزياء بيراجع المحتوى قبل ما يوصلك.</Empty>}
       <ol className="relative space-y-3 ps-7" data-testid="lessons">
         <span className="absolute top-4 bottom-4 start-[13px] w-[3px] rounded-full bg-line" aria-hidden="true" />
-        {lessons.map((l) => {
+        {lessons.map((l, idx) => {
+          const tone = TONES[idx % TONES.length];
           const p = data.progress.get(l.id);
           const mastered = data.masteredLessons.includes(l.id);
           const ratio = lessonProgressRatio(l.id, data.skills);
@@ -27,12 +30,13 @@ export function LessonsList({ data }: { data: AppData }) {
           return (
             <li key={l.id} className="relative">
               <span
-                className={`absolute top-5 -start-7 flex h-7 w-7 items-center justify-center rounded-full border-[3px] ${mastered ? 'glow border-spark bg-spark text-[#1b1300]' : p?.completedAt ? 'border-good bg-good-soft text-good' : started ? 'border-amber bg-surface' : 'border-line bg-surface'}`}
+                className={`absolute top-5 -start-7 flex h-7 w-7 items-center justify-center rounded-full border-[3px] ${mastered ? 'glow border-spark bg-spark text-[#1b1300]' : p?.completedAt ? 'border-good bg-good-soft text-good' : 'bg-surface'}`}
+                style={mastered || p?.completedAt ? undefined : { borderColor: tone }}
                 aria-hidden="true"
               >
-                {mastered || p?.completedAt ? <IconCheck size={14} /> : <span className="num text-xs font-bold">{l.order}</span>}
+                {mastered || p?.completedAt ? <IconCheck size={14} /> : <span className="num text-xs font-bold" style={{ color: tone }}>{l.order}</span>}
               </span>
-              <button type="button" className="card w-full p-4 text-start" onClick={() => navigate(`/lesson/${l.id}`)} data-testid={`lesson-${l.id}`}>
+              <button type="button" className="card w-full overflow-hidden p-4 text-start" onClick={() => navigate(`/lesson/${l.id}`)} data-testid={`lesson-${l.id}`}>
                 <div className="flex items-start justify-between gap-2">
                   <div>
                     <p className="font-bold">{l.title}</p>
@@ -42,7 +46,7 @@ export function LessonsList({ data }: { data: AppData }) {
                 </div>
                 <div className="mt-3 flex items-center gap-2">
                   <div className="h-1.5 flex-1 overflow-hidden rounded-full bg-surface-2">
-                    <div className="h-full rounded-full bg-amber" style={{ width: `${Math.round(ratio * 100)}%` }} />
+                    <div className="h-full rounded-full" style={{ width: `${Math.round(ratio * 100)}%`, background: tone }} />
                   </div>
                   <span className="text-xs text-muted">{mastered ? 'متقن' : p?.completedAt ? 'بتتدرب' : started ? `محطة ${p!.stationReached}/8` : `${l.minutes} دقيقة`}</span>
                 </div>

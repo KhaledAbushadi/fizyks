@@ -6,6 +6,7 @@ import { navigate } from '../../router';
 import { fmtMarks } from '../../engine/scoreMap';
 import { updateSettings } from '../../services/settings';
 import { LogoMark, Wordmark } from '../../ui/Logo';
+import { Mascot } from '../../ui/Mascot';
 import { Page } from '../../ui/bits';
 import { IconBolt, IconBook, IconBug, IconCards, IconDumbbell, IconFlame, IconShuffle, IconTarget, IconNext } from '../../ui/Icons';
 import { MiniScoreBar } from '../map/ScoreMap';
@@ -21,11 +22,11 @@ function taskView(t: Task) {
     case 'cards':
       return { title: `بطاقات المراجعة (${t.count})`, sub: 'قوانين وتعريفات: دقيقتين', Icon: IconCards, tone: 'bg-amber-soft text-amber', go: '/review' };
     case 'lesson':
-      return { title: t.resume ? `كمّل: ${t.title}` : `الدرس الجاي: ${t.title}`, sub: t.resume ? 'هترجع لنفس المحطة' : '15–20 دقيقة', Icon: IconBook, tone: 'bg-good-soft text-good', go: `/lesson/${t.lessonId}` };
+      return { title: t.resume ? `كمّل: ${t.title}` : `الدرس الجاي: ${t.title}`, sub: t.resume ? 'هترجع لنفس المحطة' : '15–20 دقيقة', Icon: IconBook, tone: 'bg-sky-soft text-sky', go: `/lesson/${t.lessonId}` };
     case 'mixed':
       return { title: 'الجلسة المختلطة', sub: 'أسئلة بشكل الامتحان من كل اللي خلصته', Icon: IconShuffle, tone: 'bg-violet-soft text-violet', go: '/mixed' };
     case 'practice':
-      return { title: `ورشة: ${t.title}`, sub: 'مسألة جديدة لحد ما تتقنها', Icon: IconBolt, tone: 'bg-amber-soft text-amber', go: `/practice/${t.skillId}` };
+      return { title: `ورشة: ${t.title}`, sub: 'مسألة جديدة لحد ما تتقنها', Icon: IconBolt, tone: 'bg-pink-soft text-pink', go: `/practice/${t.skillId}` };
   }
 }
 
@@ -42,19 +43,17 @@ export function Home({ data }: { data: AppData }) {
   const hour = new Date().getHours();
   const greet = hour < 12 ? 'صباح الخير' : 'مساء الخير';
   const name = data.settings.name ? `يا ${data.settings.name}` : '';
+  const heroLine = data.streak.days >= 3 ? `${data.streak.days} أيام ورا بعض. كمّل كده!` : data.plan.length ? 'يلا نفكّ حاجة جديدة النهارده' : 'خلّصت خطتك. عاش!';
   const backupDue = data.hasProgress && (!data.settings.lastBackupAt || Date.now() - data.settings.lastBackupAt > 7 * 86_400_000) && (!data.settings.backupReminderDismissedAt || Date.now() - data.settings.backupReminderDismissedAt > 3 * 86_400_000);
 
   return (
     <Page>
-      <header className="flex items-center gap-3 pt-3 pb-4">
+      <header className="flex items-center gap-3 pt-3 pb-3">
         <button type="button" onClick={onLogo} aria-label="فُكّها" data-testid="logo" className="rounded-2xl">
-          <LogoMark size={44} />
+          <LogoMark size={40} />
         </button>
         <div className="flex-1">
           <Wordmark />
-          <p className="text-sm text-muted">
-            {greet} {name}
-          </p>
         </div>
         <div className="flex items-center gap-1 rounded-full bg-surface px-3 py-1.5 shadow-sm" title="أيام متتالية" data-testid="streak">
           <IconFlame size={20} className={data.streak.days ? 'text-warm' : 'text-muted'} />
@@ -69,15 +68,26 @@ export function Home({ data }: { data: AppData }) {
         </p>
       )}
 
-      <button type="button" className="card mb-5 w-full p-4 text-start" onClick={() => navigate('/map')}>
-        <div className="mb-2 flex items-baseline justify-between">
-          <p className="font-bold">
-            أمّنت <span className="num text-2xl text-amber">{fmtMarks(data.score.secured)}</span> من 60 درجة
-          </p>
-          <span className="text-xs text-muted">تقديري</span>
+      <section className="hero relative mb-5 overflow-hidden p-4">
+        <span className="absolute -top-10 -left-10 h-32 w-32 rounded-full bg-white/20" aria-hidden="true" />
+        <span className="absolute -bottom-12 left-16 h-28 w-28 rounded-full bg-white/15" aria-hidden="true" />
+        <div className="relative flex items-center gap-2">
+          <div className="min-w-0 flex-1">
+            <p className="text-sm font-semibold opacity-80">{greet} {name}</p>
+            <p className="text-xl leading-snug font-bold">{heroLine}</p>
+          </div>
+          <Mascot mood={data.streak.days >= 3 ? 'cheer' : 'wave'} size={78} className="bob shrink-0" />
         </div>
-        <MiniScoreBar score={data.score} />
-      </button>
+        <button type="button" className="relative mt-3 w-full rounded-2xl bg-surface/90 p-3 text-start text-ink" onClick={() => navigate('/map')}>
+          <div className="mb-2 flex items-baseline justify-between">
+            <p className="font-bold">
+              أمّنت <span className="num text-2xl text-warm">{fmtMarks(data.score.secured)}</span> من 60 درجة
+            </p>
+            <span className="text-xs text-muted">تقديري</span>
+          </div>
+          <MiniScoreBar score={data.score} />
+        </button>
+      </section>
 
       <h2 className="mb-2 text-lg font-bold">خطة النهارده</h2>
       {data.plan.length === 0 && (
@@ -101,9 +111,9 @@ export function Home({ data }: { data: AppData }) {
           return (
             <li key={i}>
               <button type="button" onClick={() => navigate(v.go)} className="card flex w-full items-center gap-3 p-4 text-start transition active:scale-[0.99]" data-testid={`todo-${t.kind}`}>
-                <span className="num flex h-7 w-7 items-center justify-center rounded-full bg-ink text-sm font-bold text-bg">{i + 1}</span>
-                <span className={`flex h-11 w-11 items-center justify-center rounded-2xl ${v.tone}`}>
-                  <v.Icon />
+                <span className={`relative flex h-13 w-13 shrink-0 items-center justify-center rounded-2xl ${v.tone}`}>
+                  <v.Icon size={26} />
+                  <span className="num absolute -top-1.5 -right-1.5 flex h-6 w-6 items-center justify-center rounded-full bg-ink text-xs font-bold text-bg">{i + 1}</span>
                 </span>
                 <span className="min-w-0 flex-1">
                   <span className="block font-bold">{v.title}</span>

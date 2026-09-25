@@ -1,5 +1,5 @@
 // ورشة المسألة: ارسم ← صنّف ← اجرد ← احسب ← افحص، بدعم يُسحب تلقائياً وسلّم تلميحات إلزامي
-import { useContext, useMemo, useRef, useState } from 'react';
+import { useContext, useEffect, useMemo, useRef, useState } from 'react';
 import type { ProblemTemplate } from '../../content/schemas';
 import type { Instance } from '../../engine/template';
 import { sanityHolds } from '../../engine/template';
@@ -15,7 +15,8 @@ import { HindiDigits, Num } from '../../ui/Num';
 import { Diagram } from '../../ui/diagrams';
 import { EMPTY_PAD, NumberPad, padToString, type PadValue } from '../../ui/NumberPad';
 import { Hint, Nudge, StepDots } from '../../ui/bits';
-import { IconCheck } from '../../ui/Icons';
+import { Mascot, praise } from '../../ui/Mascot';
+import { celebrate } from '../../ui/Confetti';
 import { FreeTutor } from './FreeTutor';
 import { buildTutorPrompt } from './tutorPrompt';
 import { Solution, STEP_LABELS } from './Solution';
@@ -120,21 +121,7 @@ export function Workshop({
 
   // ———— شاشة النهاية ————
   if (done && !revealed) {
-    return (
-      <div className="pop card p-5 text-center" data-testid="workshop-done">
-        <div className="mx-auto mb-2 flex h-14 w-14 items-center justify-center rounded-full bg-good-soft text-good">
-          <IconCheck size={30} />
-        </div>
-        <p className="text-xl font-bold">{wrong === 0 ? 'فكّيتها من أول مرة!' : 'فكّيتها!'}</p>
-        <p className="mt-1 text-muted">
-          الإجابة: <Num value={inst.answer} sig={inst.sigFigs} unit={inst.answerUnit} className="font-bold text-ink" />
-        </p>
-        {wrong > 0 && <p className="mt-1 text-sm text-muted">المرة الجاية حاول من غير تلميحات، وهتلاقي الورشة بتخف تلقائي.</p>}
-        <button type="button" className="btn btn-primary mt-4 w-full" onClick={() => onFinish(result(outcome))} data-testid="workshop-continue">
-          كمّل
-        </button>
-      </div>
-    );
+    return <DoneCard wrong={wrong} inst={inst} onContinue={() => onFinish(result(outcome))} />;
   }
 
   return (
@@ -210,6 +197,30 @@ export function Workshop({
           </button>
         </div>
       )}
+    </div>
+  );
+}
+
+function DoneCard({ wrong, inst, onContinue }: { wrong: number; inst: Instance; onContinue: () => void }) {
+  useEffect(() => {
+    celebrate(wrong === 0 ? 110 : 50);
+  }, [wrong]);
+  return (
+    <div className="pop card overflow-hidden p-0 text-center" data-testid="workshop-done">
+      <div className="hero rounded-none px-5 pt-5 pb-3">
+        <Mascot mood="cheer" size={92} className="wiggle mx-auto" />
+        <p className="mt-1 text-2xl font-bold">{wrong === 0 ? 'فكّيتها من أول مرة!' : 'فكّيتها!'}</p>
+        <p className="text-sm font-semibold opacity-80">{praise()}</p>
+      </div>
+      <div className="p-5">
+        <p className="text-muted">
+          الإجابة: <Num value={inst.answer} sig={inst.sigFigs} unit={inst.answerUnit} className="font-bold text-ink" />
+        </p>
+        {wrong > 0 && <p className="mt-1 text-sm text-muted">المرة الجاية حاول من غير تلميحات، وهتلاقي الورشة بتخف تلقائي.</p>}
+        <button type="button" className="btn btn-primary mt-4 w-full" onClick={onContinue} data-testid="workshop-continue">
+          كمّل
+        </button>
+      </div>
     </div>
   );
 }

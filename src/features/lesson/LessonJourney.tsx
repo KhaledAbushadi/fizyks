@@ -13,7 +13,9 @@ import { Diagram } from '../../ui/diagrams';
 import { RichText } from '../../ui/RichText';
 import { Tex } from '../../ui/Math';
 import { BookBox, Nudge, Page, SymbolCard, TopBar } from '../../ui/bits';
-import { IconCheck, IconNext } from '../../ui/Icons';
+import { IconNext } from '../../ui/Icons';
+import { Mascot } from '../../ui/Mascot';
+import { celebrate } from '../../ui/Confetti';
 import { ProblemRunner } from '../workshop/ProblemRunner';
 import { Solution, SolutionStep, STEP_ORDER } from '../workshop/Solution';
 import { PhetEmbed } from './PhetEmbed';
@@ -94,7 +96,10 @@ function Predict({ lesson, saved, next }: { lesson: Lesson; saved?: number; next
   const [choice, setChoice] = useState<number | null>(saved ?? null);
   return (
     <div>
-      <p className="mb-1 text-sm font-bold text-amber">قبل ما تشوف: توقّع</p>
+      <div className="mb-2 flex items-center gap-2">
+        <Mascot mood="think" size={48} />
+        <p className="text-sm font-bold text-violet">قبل ما تشوف: توقّع</p>
+      </div>
       <h2 className="text-xl leading-9 font-bold">{lesson.predict.question}</h2>
       <p className="mt-1 text-sm text-muted">مش هنصحح هنا. المهم تختار اللي حاسه، وبعدين نشوف مع بعض.</p>
       <div className="mt-4 space-y-2">
@@ -273,15 +278,14 @@ function ExitTicket({ lesson }: { lesson: Lesson }) {
       await safeWrite(() => db.lessonProgress.put({ lessonId: lesson.id, ...prev, stationReached: 8, exitScore: s, completedAt: prev?.completedAt ?? Date.now() }));
       await markActiveDay();
       setFinished(true);
+      celebrate(140);
     }
   };
   if (finished) {
     const next = content.lessons.find((l) => l.order === lesson.order + 1);
     return (
       <div className="pop card p-6 text-center" data-testid="lesson-done">
-        <div className="mx-auto mb-3 flex h-16 w-16 items-center justify-center rounded-full bg-good-soft text-good">
-          <IconCheck size={34} />
-        </div>
+        <Mascot mood="cheer" size={110} className="wiggle mx-auto" />
         <p className="text-2xl font-bold">خلّصت الدرس!</p>
         <p className="mt-1 text-muted">
           تذكرة الخروج: <b className="num text-ink">{score} / 3</b> من أول محاولة
