@@ -11,5 +11,5 @@ export function LogoMark({ size = 40 }: { size?: number }) {
 }
 
 export function Wordmark() {
-  return <span className="text-2xl leading-none font-bold tracking-tight">فيزيكس بالمصري</span>;
+  return <span className="text-2xl leading-none font-bold tracking-tight">فيزكس</span>;
 }
