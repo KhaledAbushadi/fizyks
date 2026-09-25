@@ -18,8 +18,8 @@ export default defineConfig({
       injectRegister: 'auto',
       includeAssets: ['icons/*.png', 'icons/*.svg'],
       manifest: {
-        name: 'فُكّها: فيزياء تالتة ثانوي',
-        short_name: 'فُكّها',
+        name: 'فيزيكس بالمصري: فيزياء تالتة ثانوي',
+        short_name: 'فيزيكس بالمصري',
         description: 'مدرّس فيزياء تفاعلي للصف الثالث الثانوي، يشتغل من غير نت',
         lang: 'ar',
         dir: 'rtl',

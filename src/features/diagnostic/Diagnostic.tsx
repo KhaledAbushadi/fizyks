@@ -25,7 +25,7 @@ export function Welcome() {
           <LogoMark size={72} />
           <Mascot mood="wave" size={96} className="bob" />
         </div>
-        <h1 className="mt-4 text-4xl font-bold">فُكّها</h1>
+        <h1 className="mt-4 text-4xl font-bold">فيزيكس بالمصري</h1>
         <p className="mt-2 text-lg text-ink-2">الفيزيا مش صعبة. هي بس متعقّدة. وإحنا هنفكّها حتة حتة.</p>
       </div>
       <div className="card mt-8 space-y-3 p-5">

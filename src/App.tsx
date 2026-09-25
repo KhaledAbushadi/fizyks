@@ -72,7 +72,7 @@ function Shell() {
   else if (a === 'more') view = <More data={data} />;
   else if (a === 'dev' && devAllowed && b === 'ui') view = <UiGallery />;
   else if (a === 'dev' && devAllowed && b === 'content-preview') view = <ContentPreview />;
-  else view = <Page><TopBar title="فُكّها" /><Empty title="الصفحة دي مش موجودة" /></Page>;
+  else view = <Page><TopBar title="فيزيكس بالمصري" /><Empty title="الصفحة دي مش موجودة" /></Page>;
   void c;
 
   return (

@@ -49,7 +49,7 @@ export function Home({ data }: { data: AppData }) {
   return (
     <Page>
       <header className="flex items-center gap-3 pt-3 pb-3">
-        <button type="button" onClick={onLogo} aria-label="فُكّها" data-testid="logo" className="rounded-2xl">
+        <button type="button" onClick={onLogo} aria-label="فيزيكس بالمصري" data-testid="logo" className="rounded-2xl">
           <LogoMark size={40} />
         </button>
         <div className="flex-1">
