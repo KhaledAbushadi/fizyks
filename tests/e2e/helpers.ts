@@ -46,8 +46,13 @@ export function template(id: string): ProblemTemplate {
 /** يحسب الإجابة الصحيحة من الأرقام الظاهرة في نص المسألة */
 export async function answerFromStem(page: Page, id: string): Promise<number> {
   const t = template(id);
+  // انتظر ظهور كل متغيرات القالب في نص المسألة قبل القراءة
+  const names = Object.keys(t.variables);
+  await expect
+    .poll(() => page.evaluate((ns) => ns.every((n) => document.querySelector(`[data-testid=problem-stem] [data-var="${n}"]`)), names))
+    .toBe(true);
   const scope: Record<string, number> = await page.evaluate(() =>
-    Object.fromEntries([...document.querySelectorAll('[data-var][data-value]')].map((e) => [e.getAttribute('data-var')!, Number(e.getAttribute('data-value'))])),
+    Object.fromEntries([...document.querySelectorAll('[data-testid=problem-stem] [data-var][data-value]')].map((e) => [e.getAttribute('data-var')!, Number(e.getAttribute('data-value'))])),
   );
   scope.qe = 1.6e-19;
   for (const [k, expr] of Object.entries(t.derived ?? {})) if (!(k in scope)) scope[k] = evalExpr(expr, scope);
